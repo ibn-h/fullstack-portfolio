@@ -4,7 +4,7 @@
 
 ### Per project (x3)
 - [x] Write Y2Notion description
-- [ ] **Work out Y2Notion case study (problem, approach, challenge, result)**
+- [ ] Work out Y2Notion case study (problem, approach, challenge, result)
 - [ ] Take Y2Notion screenshots
 - [x] Write Hairsalon Booking description
 - [ ] Work out Hairsalon Booking case study

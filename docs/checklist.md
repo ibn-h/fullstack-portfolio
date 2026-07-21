@@ -2,82 +2,82 @@
 
 ## Milestone 1 — Content & case studies
 
-### Algemeen
-- [ ] Bio schrijven (EN + NL)
-- [ ] Hero tagline schrijven (EN + NL)
-- [ ] Skills lijst bepalen
-
 ### Per project (x3)
-- [ ] Y2Notion beschrijving schrijven
-- [ ] Y2Notion case study uitwerken (probleem, aanpak, uitdaging, resultaat)
-- [ ] Y2Notion screenshots maken
-- [ ] Hairsalon booking beschrijving schrijven
-- [ ] Hairsalon booking case study uitwerken
-- [ ] Hairsalon booking screenshots maken
-- [ ] Warehouse Insights beschrijving schrijven
-- [ ] Warehouse Insights case study uitwerken
-- [ ] Warehouse Insights screenshots maken
+- [x] Write Y2Notion description
+- [ ] **Work out Y2Notion case study (problem, approach, challenge, result)**
+- [ ] Take Y2Notion screenshots
+- [x] Write Hairsalon Booking description
+- [ ] Work out Hairsalon Booking case study
+- [ ] Take Hairsalon Booking screenshots
+- [x] Write Warehouse Insights description
+- [ ] Work out Warehouse Insights case study
+- [ ] Take Warehouse Insights screenshots
 
-## Milestone 2 — Implementatie
+### General
+- [ ] Write bio (EN + NL)
+- [ ] Write hero tagline (EN + NL)
+- [ ] Determine skills list
+
+## Milestone 2 — Implementation
 
 ### Setup
-- [ ] Next.js project aanmaken met TypeScript en Tailwind
-- [ ] ShadCN installeren en configureren
-- [ ] Framer Motion installeren
-- [ ] i18n instellen voor NL/EN (next-intl of next-i18next)
-- [ ] Design system bepalen (kleuren, typografie)
-- [ ] Mappenstructuur opzetten
+- [ ] Create Next.js project with TypeScript and Tailwind
+- [ ] Install and configure ShadCN
+- [ ] Install Framer Motion
+- [ ] Set up i18n for NL/EN (next-intl or next-i18next)
+- [ ] Determine design system (colors, typography)
+- [ ] Set up folder structure
 
-### Homepage secties
-- [ ] Hero sectie bouwen
-- [ ] Projects sectie bouwen
-- [ ] About sectie bouwen
-- [ ] Contact sectie bouwen met formulier
+### Homepage sections
+- [ ] Build Hero section
+- [ ] Build Projects section
+- [ ] Build About section
+- [ ] Build Contact section with form
 
-### Project detailpagina's
+### Project detail pages
 - [ ] `/projects/y2notion`
 - [ ] `/projects/hairsalon-booking`
 - [ ] `/projects/warehouse-insights`
 
-### Animaties
-- [ ] Hero animatie
-- [ ] Projectkaarten animatie bij scrollen
-- [ ] Pagina transitie animaties
+### Animations
+- [ ] Hero animation
+- [ ] Project cards scroll animation
+- [ ] Page transition animations
 
-### Contactformulier
-- [ ] Formulier bouwen (naam, email, bericht)
-- [ ] Formulier validatie
-- [ ] Email versturen via Resend of Nodemailer
-- [ ] Bevestigingsbericht na versturen
+### Contact form
+- [ ] Build form (name, email, message)
+- [ ] Form validation
+- [ ] Send email via Resend or Nodemailer
+- [ ] Confirmation message after submission
 
-### Meertaligheid
-- [ ] Alle tekst in EN vertaald
-- [ ] Alle tekst in NL vertaald
-- [ ] Taalwissel knop bouwen
+### Multilingual
+- [ ] All text translated to EN
+- [ ] All text translated to NL
+- [ ] Build language toggle
 
 ## Milestone 3 — SEO
 
-- [ ] Meta title en description per pagina
-- [ ] Open Graph tags (voor sociale media previews)
-- [ ] `sitemap.xml` genereren
-- [ ] `robots.txt` aanmaken
-- [ ] Alt teksten op alle afbeeldingen
-- [ ] Lighthouse score checken (streven naar 90+)
+- [ ] Meta title and description per page
+- [ ] Open Graph tags (for social media previews)
+- [ ] Generate `sitemap.xml`
+- [ ] Create `robots.txt`
+- [ ] Alt text on all images
+- [ ] Check Lighthouse score (aim for 90+)
 
 ## Milestone 4 — Pre-launch
 
-- [ ] Responsive getest op mobiel, tablet, desktop
-- [ ] Alle links getest
-- [ ] Contactformulier getest
-- [ ] Taalwissel getest
-- [ ] Geen console errors
-- [ ] Favicon instellen
-- [ ] Custom domein bepalen
+- [ ] Tested responsive on mobile, tablet, desktop
+- [ ] All links tested
+- [ ] Contact form tested
+- [ ] Language toggle tested
+- [ ] No console errors
+- [ ] Set favicon
+- [ ] Determine custom domain
 
-## Milestone 5 — Launch (deadline 12 juli)
+## Milestone 5 — Launch (deadline 1 August)
 
-- [ ] Deployen op Vercel
-- [ ] Custom domein koppelen
-- [ ] Finale check op live site
-- [ ] Portfolio delen op X
-- [ ] Portfolio link toevoegen aan bio op X, dev.to, en Medium
+- [ ] Deploy on Vercel
+- [ ] Connect custom domain
+- [ ] Final check on live site
+- [ ] Share portfolio on X
+- [ ] Add portfolio link to bio on X, dev.to, and Medium

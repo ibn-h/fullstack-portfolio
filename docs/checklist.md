@@ -74,7 +74,7 @@
 - [ ] Set favicon
 - [ ] Determine custom domain
 
-## Milestone 5 — Launch (deadline 1 August)
+## Milestone 5 — Launch (deadline 15 September)
 
 - [ ] Deploy on Vercel
 - [ ] Connect custom domain

@@ -6,9 +6,9 @@ I use a lot of YouTube and sometimes I come across useful information that I wan
 
 ### Approach
 
-I took a documentation first approach by creating a Notion page describing the tool I want to build, the core features and the step-by-step implementation. The features I identified were the YouTube-to-markdown converter and the button to save a summary to Notion.
+I took a documentation first approach by creating a Notion page describing the tool I want to build, the core features and the step-by-step implementation. The features I identified were the YouTube-to-markdown converter and the save-to-notion feature.
 
-After writing the MVP I started thinking about the tech-stack I was going to use. I went wih Next.js because it combines both the frontend and backend in one application, and its the framework I'm the most familiar with. For the AI summarized I went with Groq because you don't have to pay for a monthly subscription.
+After writing the MVP I started thinking about the tech-stack I was going to use. I went wih Next.js because it combines both the frontend and backend in one application, and its the framework I'm the most familiar with. For the AI summarization, I went with Groq because you don't have to pay for a monthly subscription.
 
 For tracking my tasks I used a simple todo file in my /docs folder. Every session I determine 2-4 todos and implement them until I'm done. Afterwards I move them to the `Done` section and write the next batch of todos. It's simple system but it allows me to work uninterrupted for a longer time, making it easier to concentrate.
 
@@ -48,18 +48,18 @@ Most Warehouses work with multiple systems, for example for managing their order
 
 ### Approach
 
-For the MVP of this project I determined to implement 7 features. The dashboard with important KPI's, orders and stocks overview pages, product detail page, authentication, realtime data and notifications. Along the way I implemented two forms for creating a stock and an order to make the project more realistic.
+For the MVP of this project I determined to implement 7 features. The dashboard with important KPI's, orders and stocks overview pages, product detail page, authentication, realtime data and notifications. Along the way I implemented two forms for creating a stock and an order to visualize the realtime functionality.
 
-For almost each feature I created a feature spec file. This is a new concept I learned, basically its a description of a feature you want to implement with at least two sections: the user story and the acceptance criteria. Using feature specs I could clearly know when a certain feature is finished saving me from wasting time golden plating. Aside from that I kept a `backlog.md` to have a overview of every core feature. It keeps me motivated because it shows I'm actually progressing.
+For almost each feature I created a feature spec file. This is a new concept I learned, basically its a description of a feature you want to implement with at least two sections: the user story and the acceptance criteria. Using feature specs I could clearly know when a certain feature is finished saving me from adding excess features. Aside from that I kept a `backlog.md` file as a checklist for every core feature.
 
-Pusher is a library that allows you to add realtime functionality to your application. I used this tool for implementing realtime data and notifications. Also I used auth.js for handling the authentication. This library makes logging in easier since it used other platforms like Google and GitHub to authenticate.
+Pusher is a library that allows you to add realtime functionality to your application. I used this tool for implementing realtime data and notifications. Also used auth.js for handling the authentication, which is a library that uses existing platform for authentication like Google and GitHub.
 
-I didn't focus on UI in the beginning...
+<!-- I didn't focus on UI in the beginning... -->
 
 ### Challenge
 
-A problem I faced while working on this problem is the lack of documentation for Pusher. They don't have tutorials specifically for Next.js applications, eventually using Claude I setup everything properly. Furthermore I noticed a bad habit of myself while working on the inventory and orders overview pages. It's that I love to refactor code and make it more efficient. While this isn't directly bad, it can take a lot of time which would better be spend finishing up the MVP. 
+A problem I faced while working on this problem is the lack of documentation for Pusher. They don't have tutorials specifically for Next.js applications. Eventually after a conversation with Claude I understood how to implement the library. Furthermore I noticed that I like to refactor code and make it more efficient. While this isn't directly bad, it can disturb your focus and make you waste time that was actually meant for the MVP.
 
 ### Result
 
-The end result for Warehouse Insights was better then expected. After finishing every task and feature I had a intuitive Dashboard application that shows real time data. Another thing I'm content about is the structure of the application. Everything is organized cleanly under Dashboard, you can easily navigate between different overviews using the sidebar. Warehouse Insights truly allows Warehouse managers to make better and faster decisions using real-time data. Managers never miss out on a opportunity because of the notifications.
+The end result for Warehouse Insights was better then expected. After finishing every task and feature I had a intuitive Dashboard application that shows real time data. Another thing I'm content about is the structure of the application. Everything is organized cleanly under /Dashboard, you can easily navigate between different overviews using the sidebar. Warehouse Insights truly allows Warehouse managers to make better and faster decisions using real-time data and notifications.

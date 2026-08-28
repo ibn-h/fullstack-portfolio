@@ -2,64 +2,62 @@
 
 ### Problem
 
-I use a lot of YouTube and sometimes I come across useful information that I want to save for a later time. What I usually do is copy the transcription of the YouTube video, give it to AI to summarize it and then save it to my Notion workspace. But after doing this multiple times I had the idea to create a tool that would automate these 3 steps. That is how Y2Notion was born, a Next.js application that converts YouTube videos to Markdown summaries and allowing you to save them directly to your Notion Workspace with the click of a button.
+I use YouTube a lot and sometimes come across useful information I want to save for later. My usual workflow was copying the transcript, pasting it into AI for a summary, and then saving it to Notion — but after doing this many times, I decided to build a tool that automates all three steps.
 
 ### Approach
 
-I took a documentation first approach by creating a Notion page describing the tool I want to build, the core features and the step-by-step implementation. The features I identified were the YouTube-to-markdown converter and the save-to-notion feature.
+I started with a documentation-first approach, writing out the core features and a step-by-step implementation plan before touching any code. The two features I identified were the YouTube-to-Markdown converter and the save-to-Notion integration.
 
-After writing the MVP I started thinking about the tech-stack I was going to use. I went wih Next.js because it combines both the frontend and backend in one application, and its the framework I'm the most familiar with. For the AI summarization, I went with Groq because you don't have to pay for a monthly subscription.
+For the stack, I went with Next.js because it combines frontend and backend in one framework, and Groq for AI summarization because it doesn't require a paid subscription.
 
-For tracking my tasks I used a simple todo file in my /docs folder. Every session I determine 2-4 todos and implement them until I'm done. Afterwards I move them to the `Done` section and write the next batch of todos. It's simple system but it allows me to work uninterrupted for a longer time, making it easier to concentrate.
+To stay focused during each session, I tracked tasks in a simple `TODO.md` file — picking 2-4 tasks per session and moving them to Done when finished.
 
 ### Challenge
 
-Along the way I also faced some technical issues. For retrieving YouTube video transcripts, I was originally using a tool called `transcript-plus` but after using it in production, I started getting a error. This error happend because YouTube only allows requests from browsers. To fix this I used an alternative tool called `Supadata`, which unlike the previous tool worked perfectly in a production environment. 
+For retrieving transcripts, I originally used `youtube-transcript-plus`, but after deploying to production I started getting errors — YouTube only allows requests from browsers, not servers. I switched to Supadata, which handled server-side requests without any issues.
 
 ### Result
 
-Y2Notion ended up becoming exactly the tool that I had envisioned. By simply pasting a URL you can generate a concise summary with the option to save it to your Notion workspace. Now each time I need a video summarized I open my shortcut to Y2Notion and let it generate a summary. Aside from having a new useful app, I also take some important lessons with me. Firstly, It's always necessary to test in a production environment. There could be features that work while developing but break when published. Secondly, don't over plan, by just doing you will find that everything will click. Lastly, split large functions into smaller parts, so when debugging you can find solutions faster.
+By pasting a URL, Y2Notion generates a concise Markdown summary with the option to save it directly to Notion. It does exactly what I envisioned — and I use it myself every time I need a video summarized.
 
-## Hairsalon booking system
+## Hairsalon Booking System
 
 ### Problem
 
-For this project I determined to create a reservation system for a  conceptual barbershop. Many barbers handle their appointments manually using WhatsApp or phone calls. This approach works for a small number of clients, but once you start to get more calls it can get quite difficult. It's also difficult for the customer because he needs to make the time to book an appointment and wait for a confirmation. With a reservation system both these problems can get solved.
+Many barbers handle appointments manually through WhatsApp or phone calls. This works for a small number of clients, but becomes difficult to manage as bookings grow. It's also inconvenient for the customer, who has to call during opening hours and wait for a confirmation. A reservation system solves both problems.
 
 ### Approach
 
-Like usual I took a documentation first approach. I first wrote a project description and determined the MVP. But this time I let a `features` file get generated. This is just a file that contains all the core `features` with a acceptance criterium. Using this `features` file I can easily determine what I need to work on and know exactly when a feature is finished.
+Just like my previous project, I took a documentation-first approach, writing a project description and determining the MVP before touching any code. This time I also introduced feature spec files — documents that describe each feature with a user story and acceptance criteria. This made it easy to know exactly when a feature was finished without adding unnecessary extras.
 
-One of the features were e-mail notifications for both the customer and barber when a booking is made. I implemented this feature using resend. Which is a library that makes it easy to send e-mails with a template. Furthermore I used Supabase as my Postgres database. In I created a table called reservations, it contains every important property including the booking status. In addition, I created a rate_limits table to avoid spam. I normally use Upstash Redis but the free tier only allows you to create one project, which was already taken.
+For the stack I used Supabase as my Postgres database, storing reservations and a rate limits table to prevent spam. For email notifications I used Resend, which allowed me to send templated emails to both the customer and barber whenever a booking was made.
 
 ### Challenge
 
-A problem where I spend a lot of time on was an issue with RLS (Row-Level Security). I made the decision to completely neglect this while working on my project. This ended up becoming a disadvantage since it blocked my queries from working after I had enabled it. And the problem is that it didn't even give a error message, It just gave a empty array back. From this I take with me to always plan out your RLS policies before working on the database layer of your application.
+I spent a lot of time debugging an issue with Row-Level Security (RLS) in Supabase. After enabling it, my queries stopped working — but instead of throwing an error, they just returned an empty array. The lesson: always plan your RLS policies before building the database layer.
 
 ### Result
 
-After finishing every feature and implementing a conceptual website called The Blade I got a fully working reservation system with a intuitive protected dashboard. Customers can make an appointment on their preferred timeslot, and afterwards the barber gets a notification saying who made a reservation and for when it is. On the server side the barber can view every reservation and their details, filter them on state and/or date, and cancel them if necessary.
+The end result is a fully working reservation system with an intuitive protected dashboard. Customers can book their preferred timeslot, and the barber receives a notification with the details. From the dashboard, the barber can view all reservations, filter by status or date, and cancel bookings when necessary.
+
+---
 
 ## Warehouse Insights
 
 ### Problem
 
-Most Warehouses work with multiple systems, for example for managing their orders and inventory. This spreads data across differente locations, making it difficult to compare and perform important actions, like reducing the stock when a order is made. In addition, most Warehouses don't have a concise interface where they can view their Warehouse information live. These are all problems that I solved with Warehouse Insights.
+Most warehouses work with multiple disconnected systems for managing orders and inventory. This spreads data across different locations, making it difficult to get a clear overview or perform actions like updating stock when an order is placed. Warehouse Insights solves this by bringing everything into one real-time dashboard.
 
 ### Approach
 
-For the MVP of this project I determined to implement 7 features. The dashboard with important KPI's, orders and stocks overview pages, product detail page, authentication, realtime data and notifications. Along the way I implemented two forms for creating a stock and an order to visualize the realtime functionality.
+For the MVP I identified seven core features: a KPI dashboard, orders and inventory overview pages, a product detail page, authentication, real-time data, and notifications. Each feature had its own spec file with a user story and acceptance criteria, so I always knew exactly what I was building and when it was done.
 
-For almost each feature I created a feature spec file. This is a new concept I learned, basically its a description of a feature you want to implement with at least two sections: the user story and the acceptance criteria. Using feature specs I could clearly know when a certain feature is finished saving me from adding excess features. Aside from that I kept a `backlog.md` file as a checklist for every core feature.
-
-Pusher is a library that allows you to add realtime functionality to your application. I used this tool for implementing realtime data and notifications. Also used auth.js for handling the authentication, which is a library that uses existing platform for authentication like Google and GitHub.
-
-<!-- I didn't focus on UI in the beginning... -->
+For real-time functionality I used Pusher, and for authentication I used Auth.js with Google as the provider. I also kept a `backlog.md` file as a checklist to track progress across all features.
 
 ### Challenge
 
-A problem I faced while working on this problem is the lack of documentation for Pusher. They don't have tutorials specifically for Next.js applications. Eventually after a conversation with Claude I understood how to implement the library. Furthermore I noticed that I like to refactor code and make it more efficient. While this isn't directly bad, it can disturb your focus and make you waste time that was actually meant for the MVP.
+Pusher's documentation doesn't cover Next.js specifically, which made the implementation difficult to figure out. After working through it I got a solid understanding of how to integrate real-time functionality into a Next.js application. I also noticed a tendency to refactor code mid-session — while not inherently bad, it pulled focus away from the MVP and wasted time better spent on core features.
 
 ### Result
 
-The end result for Warehouse Insights was better then expected. After finishing every task and feature I had a intuitive Dashboard application that shows real time data. Another thing I'm content about is the structure of the application. Everything is organized cleanly under /Dashboard, you can easily navigate between different overviews using the sidebar. Warehouse Insights truly allows Warehouse managers to make better and faster decisions using real-time data and notifications.
+Warehouse Insights ended up better than expected — a real-time dashboard that gives warehouse managers a clear, centralized view of their operations. The application is cleanly structured under a `/dashboard` route with an intuitive sidebar for navigating between overviews, making it easy to monitor stock, track orders, and act on live notifications.

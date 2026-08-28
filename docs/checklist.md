@@ -4,13 +4,14 @@
 
 ### Per project (x3)
 - [x] Write Y2Notion description
-- [ ] Work out Y2Notion case study (problem, approach, challenge, result)
+- [x] Work out Y2Notion case study (problem, approach, challenge, result)
 - [ ] Take Y2Notion screenshots
+  - [ ] Save to notion screenshot => bug fix required
 - [x] Write Hairsalon Booking description
-- [ ] Work out Hairsalon Booking case study
+- [x] Work out Hairsalon Booking case study
 - [ ] Take Hairsalon Booking screenshots
 - [x] Write Warehouse Insights description
-- [ ] Work out Warehouse Insights case study
+- [x] Work out Warehouse Insights case study
 - [ ] Take Warehouse Insights screenshots
 
 ### General

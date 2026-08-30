@@ -22,10 +22,9 @@
 ## Milestone 2 — Implementation
 
 ### Setup
-- [ ] Create Next.js project with TypeScript and Tailwind
-- [ ] Install and configure ShadCN
-- [ ] Install Framer Motion
-- [ ] Set up i18n for NL/EN (next-intl or next-i18next)
+- [x] Create Next.js project with TypeScript and Tailwind
+- [x] Install and configure ShadCN
+- [x] Install Framer Motion
 - [ ] Determine design system (colors, typography)
 - [ ] Set up folder structure
 
@@ -50,11 +49,6 @@
 - [ ] Form validation
 - [ ] Send email via Resend or Nodemailer
 - [ ] Confirmation message after submission
-
-### Multilingual
-- [ ] All text translated to EN
-- [ ] All text translated to NL
-- [ ] Build language toggle
 
 ## Milestone 3 — SEO
 

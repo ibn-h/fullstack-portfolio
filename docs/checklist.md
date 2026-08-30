@@ -5,19 +5,19 @@
 ### Per project (x3)
 - [x] Write Y2Notion description
 - [x] Work out Y2Notion case study (problem, approach, challenge, result)
-- [ ] Take Y2Notion screenshots
-  - [ ] Save to notion screenshot => bug fix required
+- [x] Take Y2Notion screenshots
+  - [x] Save to notion screenshot => bug fix required
 - [x] Write Hairsalon Booking description
 - [x] Work out Hairsalon Booking case study
-- [ ] Take Hairsalon Booking screenshots
+- [x] Take Hairsalon Booking screenshots
 - [x] Write Warehouse Insights description
 - [x] Work out Warehouse Insights case study
 - [ ] Take Warehouse Insights screenshots
 
 ### General
-- [ ] Write bio (EN + NL)
-- [ ] Write hero tagline (EN + NL)
-- [ ] Determine skills list
+- [x] Write bio (EN + NL)
+- [x] Write hero tagline (EN + NL)
+- [x] Determine skills list
 
 ## Milestone 2 — Implementation
 

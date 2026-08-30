@@ -1,15 +1,55 @@
-## Project description
+## Project descriptions
 
 ### Y2Notion
 
-Y2Notion is a tool that converts YouTube video's to concise summaries using Markdown. Aside from that it comes with the option to directly save your summary to your Notion workspace, saving you the time and effort of doing it manually. Y2Notion is useful for people who want to quickly extract key insights from YouTube videos, or who want to save valuable information for later moments.
+Y2Notion is a Next.js SaaS tool that converts YouTube videos into structured Markdown summaries using AI. It connects directly to your Notion workspace, allowing you to save summaries with one click. Built with Groq API for fast AI summarization and the Notion API for seamless integration.  
 
-### Hairsalon booking system
+### Hairsalon Booking System
 
-Full-stack barbershop booking system that automates the process of booking appointments with clients. The application provides a intuitive booking form for the client to make an appointment. The barber can then confirm or cancel these appointments in his secured dashboard.
+A full-stack reservation system built for a conceptual barbershop called The Blade. Customers can book appointments on their preferred timeslot and receive an email confirmation, while the barber manages all reservations from a protected dashboard. Built with Next.js, Supabase, and Resend.
 
-### Warehouse insights
+### Warehouse Insights
 
-Warehouse Insights is an analytical dashboard application made for Warehouse managers. The goal is to provide a platform to quickly analyze the state of a warehouse including important information like open orders, total inventory items and low stock items. This allows managers to quickly make important decision based on data. Warehouse Insights comes with real-time data, live notifications, and advanced filtering.
+A real-time dashboard that gives warehouse managers a centralized view of their orders, inventory, and KPIs. Built with Pusher for live data updates and Auth.js for secure authentication, it replaces disconnected systems with one intuitive interface. Managers can monitor stock levels, track orders, and receive instant notifications when something changes.
 
-## Bio
+## Hero
+
+### Bio
+
+I'm a full-stack developer specialized in building web applications and SaaS products with Next.js. I work with small businesses and entrepreneurs who need a reliable developer to bring their idea to life. The applications I build are end-to-end making you need only one developer. Have a project in mind? Let's talk.
+
+### Hero tagline
+
+End-to-end Next.js developer for startups and small businesses.
+
+### Skills list
+
+**Languages:**
+
+- TypeScript
+- JavaScript
+- HTML & CSS
+  
+**Frameworks & Libraries:**
+- Next.js
+- React
+- Tailwind CSS
+- Framer Motion
+- Backend & Database
+- Supabase
+- Prisma
+- PostgreSQL
+- Auth.js
+- Pusher
+  
+**APIs & Integrations:**
+- Stripe
+- Notion API
+- Groq API
+- Resend
+
+**Tools & Workflow:**
+- Git & GitHub
+- Vercel
+- Figma
+- VS Code

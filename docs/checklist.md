@@ -25,26 +25,26 @@
 - [x] Create Next.js project with TypeScript and Tailwind
 - [x] Install and configure ShadCN
 - [x] Install Framer Motion
-- [ ] Determine design system (colors, typography)
-- [ ] Set up folder structure
+- [x] Determine design system (colors, typography)
+- [x] Set up folder structure - 10m
 
-### Homepage sections
+### Homepage sections - 60m
 - [ ] Build Hero section
 - [ ] Build Projects section
 - [ ] Build About section
 - [ ] Build Contact section with form
 
-### Project detail pages
+### Project detail pages - 30m
 - [ ] `/projects/y2notion`
 - [ ] `/projects/hairsalon-booking`
 - [ ] `/projects/warehouse-insights`
 
-### Animations
+### Animations - 35m
 - [ ] Hero animation
 - [ ] Project cards scroll animation
 - [ ] Page transition animations
 
-### Contact form
+### Contact form - 30m
 - [ ] Build form (name, email, message)
 - [ ] Form validation
 - [ ] Send email via Resend or Nodemailer

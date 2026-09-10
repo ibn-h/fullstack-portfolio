@@ -22,7 +22,7 @@ Geist
 | Border | `#222222` | Subtiele borders |
 | Text primary | `#EDEDED` | Hoofdtekst |
 | Text muted | `#888888` | Secundaire tekst |
-| Accent | `#6366F1` | Buttons, highlights |
+| Accent | `#10B981` | Buttons, highlights |
 
 ## Spacing
 

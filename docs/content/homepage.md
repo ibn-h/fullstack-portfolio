@@ -22,7 +22,7 @@ I'm a full-stack developer specialized in building web applications and SaaS pro
 
 End-to-end Next.js developer for startups and small businesses.
 
-### Skills list
+## Skills list
 
 **Languages:**
 

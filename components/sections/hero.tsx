@@ -23,11 +23,15 @@ export function Hero({ name }: HeroProps) {
         </p>
 
         <div className="flex items-center gap-lg">
-          <Button>
-            <Link href="#contact">Let&apos;s talk</Link>
+          <Button nativeButton={false} render={<Link href="#contact" />}>
+            Let&apos;s talk
           </Button>
-          <Button variant="link">
-            <Link href="#projects">See my work ↓</Link>
+          <Button
+            variant="link"
+            nativeButton={false}
+            render={<Link href="#projects" />}
+          >
+            See my work ↓
           </Button>
         </div>
       </div>

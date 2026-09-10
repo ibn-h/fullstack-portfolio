@@ -1,9 +1,11 @@
 import { Hero } from "@/components/sections/hero";
+import ProjectsSection from "@/components/projects/ProjectsSection";
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <main className="w-full">
       <Hero name="Badr" />
-    </div>
+      <ProjectsSection/>
+    </main>
   );
 }

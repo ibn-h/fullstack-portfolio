@@ -31,7 +31,7 @@
 ### Homepage sections - 60m
 - [x] Build Hero section
 - [x] Build Projects section
-- [ ] Build About section
+- [x] Build About section
 - [ ] Build Contact section with form
 
 ### Project detail pages - 30m

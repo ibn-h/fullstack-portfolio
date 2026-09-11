@@ -49,6 +49,7 @@
   --color-text: #ededed;
   --color-muted: #888888;
   --color-primary: #10b980;
+  --color-destructive: #f87171;
 
   /* Spacing */
   --spacing-xs: 4px;

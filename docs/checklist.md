@@ -30,7 +30,7 @@
 
 ### Homepage sections - 60m
 - [x] Build Hero section
-- [] Build Projects section
+- [x] Build Projects section
 - [ ] Build About section
 - [ ] Build Contact section with form
 

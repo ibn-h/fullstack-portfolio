@@ -53,3 +53,15 @@ End-to-end Next.js developer for startups and small businesses.
 - Vercel
 - Figma
 - VS Code
+
+## About section
+
+
+
+I'm Badr, a self-taught full-stack developer with two years of experience building web applications. One of my recent projects is Y2Notion, a SaaS tool that summarizes YouTube videos and saves them directly to Notion.
+
+I like to work in a structured way, which is why every project starts with documentation. I only write the first line of code once I have a clear project description and defined feature specs.
+
+Alongside development, I worked at an IT helpdesk, helping colleagues troubleshoot technical issues, an experience that sharpened my problem-solving and communication skills. I'm 19 years old and in my free time I like to play chess.
+
+I'm currently available for freelance projects. Have something in mind? Let's talk.

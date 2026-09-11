@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowRight } from "lucide-react";
-import { GithubIcon } from "../icons/GitHubIcon";
+import {
+  IconArrowRight,
+  IconBrandGithub,
+  IconExternalLink,
+} from "@tabler/icons-react";
 
 interface ProjectLinksProps {
   liveUrl: string;
@@ -25,7 +28,7 @@ export function ProjectLinks({
         render={<a href={liveUrl} target="_blank" rel="noopener noreferrer" />}
         className="border-border text-muted hover:text-text hover:border-text"
       >
-        <ExternalLink className="w-3.5 h-3.5" />
+        <IconExternalLink aria-hidden="true" />
         Live
       </Button>
       {!featured && (
@@ -38,7 +41,8 @@ export function ProjectLinks({
           }
           className="border-border text-muted hover:text-text hover:border-text"
         >
-          <GithubIcon className="w-3.5 h-3.5" aria-hidden="true" />
+          <IconBrandGithub aria-hidden="true" />
+          <span className="sr-only">View source on GitHub</span>
         </Button>
       )}
       <Button
@@ -49,7 +53,7 @@ export function ProjectLinks({
         className="border-border text-muted hover:text-text hover:border-text"
       >
         Case study
-        <ArrowRight className="w-3.5 h-3.5" />
+        <IconArrowRight aria-hidden="true" />
       </Button>
     </div>
   );

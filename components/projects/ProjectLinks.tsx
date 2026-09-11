@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ArrowRight } from "lucide-react";
+import { GithubIcon } from "../icons/GitHubIcon";
 
 interface ProjectLinksProps {
   liveUrl: string;
@@ -32,10 +33,12 @@ export function ProjectLinks({
           variant="outline"
           size="sm"
           nativeButton={false}
-          render={<a href={githubUrl} target="_blank" rel="noopener noreferrer" />}
+          render={
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" />
+          }
           className="border-border text-muted hover:text-text hover:border-text"
         >
-          <i className="ti ti-brand-github w-3.5 h-3.5" aria-hidden="true" />
+          <GithubIcon className="w-3.5 h-3.5" aria-hidden="true" />
         </Button>
       )}
       <Button

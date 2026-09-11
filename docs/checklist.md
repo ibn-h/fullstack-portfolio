@@ -29,8 +29,8 @@
 - [x] Set up folder structure - 10m
 
 ### Homepage sections - 60m
-- [ ] Build Hero section
-- [ ] Build Projects section
+- [x] Build Hero section
+- [] Build Projects section
 - [ ] Build About section
 - [ ] Build Contact section with form
 

@@ -108,3 +108,23 @@
     font-weight: var(--text-small--font-weight);
   }
 }
+
+/**
+ * The one place animations are switched off for `prefers-reduced-motion`.
+ *
+ * Motion cannot know the preference until it hydrates, so the hidden `initial`
+ * state still ships in the server-rendered HTML. Pinning `[data-animated]`
+ * elements to their final values here means reduced-motion users never see the
+ * animation begin, and content behind a `whileInView` trigger is visible from
+ * the first paint. MotionProvider stops the matching JS work.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-animated] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

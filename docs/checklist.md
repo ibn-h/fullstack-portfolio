@@ -39,7 +39,7 @@
 - [ ] `/projects/hairsalon-booking`
 - [ ] `/projects/warehouse-insights`
 
-### Animations - 3.m
+### Animations - 30m
 - [ ] Hero animation
 - [ ] Project cards scroll animation
 - [ ] Page transition animations
@@ -69,7 +69,7 @@
 - [ ] Set favicon
 - [ ] Determine custom domain
 
-## Milestone 5 — Launch (deadline 15 September)
+## Milestone 5 — Launch (deadline 20 September)
 
 - [ ] Deploy on Vercel
 - [ ] Connect custom domain

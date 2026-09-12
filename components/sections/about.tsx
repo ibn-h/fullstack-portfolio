@@ -13,7 +13,7 @@ const stats = [
   { value: "19", label: "years old" },
 ];
 
-export function About() {
+export default function About() {
   return (
     <section id="about" className="px-6 py-xl sm:px-xl sm:py-2xl">
       <Card className="rounded-lg border border-border bg-surface ring-0 [--card-spacing:var(--spacing-lg)]">

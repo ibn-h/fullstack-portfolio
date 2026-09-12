@@ -40,6 +40,9 @@ type Errors = Partial<Record<keyof Values, string>>;
 
 const EMPTY: Values = { name: "", email: "", message: "" };
 
+const fieldClassName =
+  "h-auto border-border bg-bg px-md py-sm text-body placeholder:text-muted focus-visible:border-primary focus-visible:ring-primary/20";
+
 function validate(values: Values): Errors {
   const errors: Errors = {};
 
@@ -60,10 +63,7 @@ function validate(values: Values): Errors {
   return errors;
 }
 
-const fieldClassName =
-  "h-auto border-border bg-bg px-md py-sm text-body placeholder:text-muted focus-visible:border-primary focus-visible:ring-primary/20";
-
-export function Contact() {
+export default function Contact() {
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
@@ -82,14 +82,13 @@ export function Contact() {
     setStatus("sending");
 
     try {
-      // TODO: create app/api/contact/route.ts that sends this with Resend,
-      // then uncomment the call below.
-      // const response = await fetch("/api/contact", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(values),
-      // });
-      // if (!response.ok) throw new Error("Request failed");
+      const response = await fetch("/api/resend", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) throw new Error("Request failed");
 
       setValues(EMPTY);
       setStatus("sent");
@@ -118,7 +117,7 @@ export function Contact() {
           </p>
         </div>
 
-        <Card className="w-full max-w-[480px] rounded-lg border border-border bg-surface ring-0 [--card-spacing:var(--spacing-lg)]">
+        <Card className="w-full max-w-120 rounded-lg border border-border bg-surface ring-0 [--card-spacing:var(--spacing-lg)]">
           <CardContent>
             {status === "sent" ? (
               <div
@@ -149,6 +148,7 @@ export function Contact() {
                   </label>
                   <Input
                     id="contact-name"
+                    type="text"
                     name="name"
                     autoComplete="name"
                     placeholder="Your name"
@@ -241,7 +241,7 @@ export function Contact() {
           </CardContent>
         </Card>
 
-        <div className="flex w-full max-w-[480px] flex-col items-stretch justify-center gap-md sm:w-auto sm:flex-row">
+        <div className="flex w-full max-w-120 flex-col items-stretch justify-center gap-md sm:w-auto sm:flex-row">
           {socials.map(({ label, href, icon: Icon }) => (
             <Button
               key={label}

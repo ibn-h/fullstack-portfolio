@@ -6,7 +6,7 @@ type HeroProps = {
   name: string;
 };
 
-export function Hero({ name }: HeroProps) {
+export default function Hero({ name }: HeroProps) {
   return (
     <section
       id="hero"

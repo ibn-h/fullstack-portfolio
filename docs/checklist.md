@@ -32,14 +32,14 @@
 - [x] Build Hero section
 - [x] Build Projects section
 - [x] Build About section
-- [ ] Build Contact section with form
+- [x] Build Contact section with form
 
 ### Project detail pages - 30m
 - [ ] `/projects/y2notion`
 - [ ] `/projects/hairsalon-booking`
 - [ ] `/projects/warehouse-insights`
 
-### Animations - 35m
+### Animations - 3.m
 - [ ] Hero animation
 - [ ] Project cards scroll animation
 - [ ] Page transition animations

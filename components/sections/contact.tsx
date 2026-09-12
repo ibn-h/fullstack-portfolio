@@ -229,7 +229,7 @@ export function Contact() {
 
                 <Button
                   size="lg"
-                  className="w-full text-bg"
+                  className="w-full"
                   onClick={handleSubmit}
                   disabled={status === "sending"}
                 >

@@ -8,7 +8,10 @@ type HeroProps = {
 
 export function Hero({ name }: HeroProps) {
   return (
-    <section className="rounded-lg border border-border bg-background px-6 py-xl sm:px-xl sm:py-2xl">
+    <section
+      id="hero"
+      className="rounded-lg border border-border bg-background px-6 py-xl sm:px-xl sm:py-2xl"
+    >
       <div className="">
         <p className="mb-md text-small text-muted">Hi, I&apos;m {name} —</p>
 

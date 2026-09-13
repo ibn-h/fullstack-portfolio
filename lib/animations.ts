@@ -1,19 +1,17 @@
 import type { Variants } from "motion/react";
 
 /**
- * Shared animation tokens. Every animated surface reads its timing from here so
- * the hero, the scroll reveals and the page transitions stay in sync.
+ * Shared animation tokens. Every Motion-animated surface reads its timing from
+ * here so the hero and the scroll reveals stay in sync. Route transitions use
+ * the View Transitions API and are timed in `globals.css`.
  */
 export const DURATION = {
   /** Entrance animations: hero stagger, scroll reveals. */
   entrance: 0.4,
-  /** Route transitions — kept short so navigation never feels sluggish. */
-  transition: 0.25,
 } as const;
 
 export const EASE = {
   entrance: "easeOut",
-  transition: "easeInOut",
 } as const;
 
 /** Delay between siblings in a staggered group. */
@@ -23,7 +21,6 @@ export const STAGGER = 0.12;
 export const OFFSET = {
   hero: 20,
   card: 24,
-  page: 8,
 } as const;
 
 /**
@@ -80,14 +77,4 @@ export const reveal: Variants = {
       delay: index * STAGGER,
     },
   }),
-};
-
-/** Route transition — a faster, shorter version of the entrance. */
-export const pageTransition: Variants = {
-  hidden: { opacity: 0, y: OFFSET.page },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: DURATION.transition, ease: EASE.transition },
-  },
 };

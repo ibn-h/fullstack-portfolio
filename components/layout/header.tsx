@@ -33,7 +33,7 @@ export function Header() {
           : "border-transparent bg-transparent",
       )}
     >
-      <div className="flex items-center justify-between px-6 py-md sm:px-xl">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-md sm:px-xl">
         <Link
           href="/"
           onClick={() => setOpen(false)}

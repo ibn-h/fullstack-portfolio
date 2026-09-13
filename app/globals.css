@@ -110,6 +110,56 @@
 }
 
 /**
+ * Route transitions (React `<ViewTransition>`).
+ *
+ * `page-fade` is set by `app/template.tsx`: the old page leaves quickly, the new
+ * one fades in once it has gone. `morph` is set by `ProjectImageTransition`,
+ * which moves a project image between its card and the detail hero.
+ */
+:root {
+  --vt-exit: 150ms;
+  --vt-enter: 210ms;
+  --vt-move: 400ms;
+}
+
+/* Let clicks reach the live page while a transition is running. */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page-fade) {
+  animation: var(--vt-exit) ease-in both vt-fade reverse;
+}
+
+::view-transition-new(.page-fade) {
+  animation: var(--vt-enter) ease-out var(--vt-exit) both vt-fade;
+}
+
+::view-transition-group(.morph) {
+  animation-duration: var(--vt-move);
+}
+
+/* A brief blur hides interpolation artifacts while the image resizes. */
+::view-transition-image-pair(.morph) {
+  animation-name: vt-blur;
+}
+
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vt-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+/**
  * The one place animations are switched off for `prefers-reduced-motion`.
  *
  * Motion cannot know the preference until it hydrates, so the hidden `initial`
@@ -126,5 +176,13 @@
   [data-animated] {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  /* Routes swap instantly, as they would without view transitions. */
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

@@ -34,7 +34,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-surface">
-      <div className="flex flex-col gap-lg px-6 py-xl sm:px-xl">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-lg px-6 py-xl sm:px-xl">
         <div className="flex flex-col gap-lg sm:flex-row sm:justify-between">
           <div className="flex max-w-[36ch] flex-col gap-sm">
             <Link

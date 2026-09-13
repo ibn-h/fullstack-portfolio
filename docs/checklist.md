@@ -35,19 +35,18 @@
 - [x] Build Contact section with form
 
 ### Project detail pages - 30m
-- [ ] `/projects/y2notion`
-- [ ] `/projects/hairsalon-booking`
-- [ ] `/projects/warehouse-insights`
+- [x] `/projects/y2notion`
+- [x] `/projects/hairsalon-booking`
+- [x] `/projects/warehouse-insights`
 
 ### Animations - 30m
-- [ ] Hero animation
-- [ ] Project cards scroll animation
+- [x] Hero animation
 - [ ] Page transition animations
 
 ### Contact form - 30m
-- [ ] Build form (name, email, message)
-- [ ] Form validation
-- [ ] Send email via Resend or Nodemailer
+- [x] Build form (name, email, message)
+- [x] Form validation
+- [x] Send email via Resend or Nodemailer
 - [ ] Confirmation message after submission
 
 ## Milestone 3 — SEO

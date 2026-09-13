@@ -21,25 +21,28 @@ export default function About() {
           <h2 className="text-small text-muted">About me</h2>
         </CardHeader>
 
-        <CardContent className="flex flex-col gap-lg">
-          <p className="text-h4 text-text max-w-[60ch]">
-            I&apos;m Badr, a self-taught full-stack developer with two years of
-            experience building web applications.
-          </p>
+        <CardContent className="grid gap-xl lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:items-start">
+          <div className="flex flex-col gap-lg">
+            <p className="text-h4 text-text">
+              I&apos;m Badr, a self-taught full-stack developer with two years
+              of experience building web applications.
+            </p>
 
-          <p className="text-body text-muted max-w-[60ch]">
-            One of my recent projects is Y2Notion, a SaaS tool that summarizes
-            YouTube videos and saves them directly to Notion. I like to work in
-            a structured way — every project starts with documentation, and I
-            only write code once I have a clear plan and defined feature specs.
-          </p>
+            <p className="text-body text-muted">
+              One of my recent projects is Y2Notion, a SaaS tool that
+              summarizes YouTube videos and saves them directly to Notion. I
+              like to work in a structured way — every project starts with
+              documentation, and I only write code once I have a clear plan and
+              defined feature specs.
+            </p>
 
-          <p className="text-body text-muted max-w-[60ch]">
-            Alongside development, I worked at an IT helpdesk, an experience
-            that sharpened my problem-solving and communication skills.
-          </p>
+            <p className="text-body text-muted">
+              Alongside development, I worked at an IT helpdesk, an experience
+              that sharpened my problem-solving and communication skills.
+            </p>
+          </div>
 
-          <dl className="grid grid-cols-3 gap-md">
+          <dl className="grid grid-cols-3 gap-md lg:grid-cols-1">
             {stats.map((stat) => (
               <div
                 key={stat.label}

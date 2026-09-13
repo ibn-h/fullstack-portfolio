@@ -1,28 +1,21 @@
-"use client";
-
-import type { ReactNode } from "react";
-import { motion } from "motion/react";
-
-import { animated, pageTransition } from "@/lib/animations";
+import { ViewTransition, type ReactNode } from "react";
 
 /**
- * Fades each route in as it mounts.
+ * Crossfades between routes.
  *
  * Next gives the template a fresh key whenever the first path segment changes,
- * so navigating between `/` and `/projects/[slug]` remounts this and replays
- * the fade. `children` are rendered on the server and passed through as a
- * prop, so marking this file `"use client"` does not pull the pages into the
- * client bundle.
+ * so navigating between `/` and `/projects/[slug]` unmounts the old page and
+ * mounts the new one — which is what fires the `exit` and `enter` animations.
+ * Route navigations are React transitions, so no extra wiring is needed.
+ *
+ * The `page-fade` class is styled in `globals.css`. `default="none"` keeps this
+ * boundary still during unrelated transitions, so named elements inside it
+ * (like the project image morph) animate on their own.
  */
 export default function Template({ children }: { children: ReactNode }) {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={pageTransition}
-      {...animated}
-    >
+    <ViewTransition enter="page-fade" exit="page-fade" default="none">
       {children}
-    </motion.div>
+    </ViewTransition>
   );
 }

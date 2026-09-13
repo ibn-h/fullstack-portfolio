@@ -1,9 +1,11 @@
 import Image from "next/image";
+import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
 
 interface FeaturedProjectProps {
+  slug: string;
   title: string;
   description: string;
   image: string;
@@ -14,6 +16,7 @@ interface FeaturedProjectProps {
 }
 
 export function FeaturedProject({
+  slug,
   title,
   description,
   image,
@@ -25,16 +28,18 @@ export function FeaturedProject({
   return (
     <Card className="bg-surface border-border overflow-hidden py-0">
       <CardContent className="p-0 grid grid-cols-2">
-        <div className="relative h-70">
-          <Image
-            src={image}
-            alt={`${title} screenshot`}
-            fill
-            sizes="50vw"
-            priority
-            className="object-cover"
-          />
-        </div>
+        <ProjectImageTransition slug={slug}>
+          <div className="relative h-70">
+            <Image
+              src={image}
+              alt={`${title} screenshot`}
+              fill
+              sizes="50vw"
+              priority
+              className="object-cover"
+            />
+          </div>
+        </ProjectImageTransition>
         <div className="p-8 flex flex-col justify-center gap-4">
           <small className="text-muted">Featured project</small>
           <h3 className="text-text m-0">{title}</h3>

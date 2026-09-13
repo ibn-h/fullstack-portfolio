@@ -1,9 +1,11 @@
 import Image from "next/image";
+import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
 
 interface SmallProjectProps {
+  slug: string;
   title: string;
   description: string;
   image: string;
@@ -14,6 +16,7 @@ interface SmallProjectProps {
 }
 
 export function SmallProject({
+  slug,
   title,
   description,
   image,
@@ -25,15 +28,17 @@ export function SmallProject({
   return (
     <Card className="bg-surface border-border overflow-hidden py-0">
       <CardContent className="p-0">
-        <div className="relative h-40">
-          <Image
-            src={image}
-            alt={`${title} screenshot`}
-            fill
-            sizes="50vw"
-            className="object-cover"
-          />
-        </div>
+        <ProjectImageTransition slug={slug}>
+          <div className="relative h-40">
+            <Image
+              src={image}
+              alt={`${title} screenshot`}
+              fill
+              sizes="50vw"
+              className="object-cover"
+            />
+          </div>
+        </ProjectImageTransition>
         <div className="p-5 flex flex-col gap-3">
           <h4 className="text-text m-0">{title}</h4>
           <p className="text-muted text-sm leading-relaxed m-0">

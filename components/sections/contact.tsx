@@ -82,7 +82,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="px-6 py-xl sm:px-xl sm:py-2xl"
+      className="-scroll-mt-lg px-6 py-xl sm:-scroll-mt-[calc(var(--spacing-xl)+var(--spacing-lg))] sm:px-xl sm:py-2xl"
     >
       <div className="flex flex-col items-center gap-lg">
         <div className="inline-flex items-center gap-sm rounded-full border border-primary/20 bg-primary/10 px-md py-xs">

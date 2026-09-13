@@ -8,7 +8,7 @@
 
 ## Bugs
 
-- [ ] Make scroll animation to contact section land on the full section
+- [x] Make scroll animation to contact section land on the full section
 
 ## Done
 

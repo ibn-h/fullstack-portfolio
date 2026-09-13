@@ -5,37 +5,43 @@ export interface Screenshot {
 
 /** Each entry is one paragraph. */
 export interface CaseStudy {
-  problem: string[];
-  approach: string[];
-  challenge: string[];
-  result: string[];
+  problem: readonly string[];
+  approach: readonly string[];
+  challenge: readonly string[];
+  result: readonly string[];
 }
 
 export interface Project {
   slug: string;
   title: string;
   tagline: string;
+  description: string;
   role: string;
-  stack: string[];
+  timeline: string;
+  stack: readonly string[];
   liveUrl: string;
   githubUrl: string;
-  featured?: boolean;
   heroImage: Screenshot;
-  gallery: Screenshot[];
+  gallery: readonly Screenshot[];
+  featured: boolean;
   caseStudy: CaseStudy;
 }
 
-export const projects: Project[] = [
+export const projects = [
   {
     slug: "y2notion",
     title: "Y2Notion",
     tagline:
       "Converts YouTube videos into structured Markdown summaries using AI, with one-click save to Notion.",
+    description:
+      "Y2Notion is a Next.js SaaS tool that converts YouTube videos into structured Markdown summaries using AI. It connects directly to your Notion workspace, allowing you to save summaries with one click. Built with Groq API for fast AI summarization and the Notion API for seamless integration.",
     role: "Solo developer",
+    // TODO: add the project timeline, e.g. "3 weeks".
+    timeline: "",
     stack: ["Next.js", "Groq API", "Notion API", "TypeScript", "Supadata"],
     liveUrl: "https://y2notion.com",
+    // TODO: replace with the real repository URL.
     githubUrl: "https://github.com/jouwusername/y2notion",
-    featured: true,
     heroImage: {
       src: "/screenshots/y2notion-homepage.png",
       alt: "Y2Notion homepage with a YouTube link pasted into the input next to the Summarize button",
@@ -50,6 +56,7 @@ export const projects: Project[] = [
         alt: "Generated Markdown summary of a JavaScript video with Copy and Save to Notion actions",
       },
     ],
+    featured: true,
     caseStudy: {
       problem: [
         "I use YouTube a lot and sometimes come across useful information I want to save for later. My usual workflow was copying the transcript, pasting it into AI for a summary, and then saving it to Notion — but after doing this many times, I decided to build a tool that automates all three steps.",
@@ -72,9 +79,14 @@ export const projects: Project[] = [
     title: "Hairsalon booking",
     tagline:
       "Reservation system with email confirmations and a protected barber dashboard.",
+    description:
+      "A full-stack reservation system built for a conceptual barbershop called The Blade. Customers can book appointments on their preferred timeslot and receive an email confirmation, while the barber manages all reservations from a protected dashboard. Built with Next.js, Supabase, and Resend.",
     role: "Solo developer",
+    // TODO: add the project timeline, e.g. "3 weeks".
+    timeline: "",
     stack: ["Next.js", "Supabase", "Resend"],
     liveUrl: "https://theblade.com",
+    // TODO: replace with the real repository URL.
     githubUrl: "https://github.com/jouwusername/hairsalon",
     heroImage: {
       src: "/screenshots/hairsalon-homepage.png",
@@ -90,6 +102,7 @@ export const projects: Project[] = [
         alt: "Barber dashboard listing reservations by date and timeslot, with status and date filters",
       },
     ],
+    featured: false,
     caseStudy: {
       problem: [
         "Many barbers handle appointments manually through WhatsApp or phone calls. This works for a small number of clients, but becomes difficult to manage as bookings grow. It's also inconvenient for the customer, who has to call during opening hours and wait for a confirmation. A reservation system solves both problems.",
@@ -111,9 +124,14 @@ export const projects: Project[] = [
     title: "Warehouse Insights",
     tagline:
       "Real-time KPI dashboard with live order tracking and instant notifications.",
+    description:
+      "A real-time dashboard that gives warehouse managers a centralized view of their orders, inventory, and KPIs. Built with Pusher for live data updates and Auth.js for secure authentication, it replaces disconnected systems with one intuitive interface. Managers can monitor stock levels, track orders, and receive instant notifications when something changes.",
     role: "Solo developer",
+    // TODO: add the project timeline, e.g. "3 weeks".
+    timeline: "",
     stack: ["Next.js", "Pusher", "Auth.js"],
     liveUrl: "https://warehouse-insights.com",
+    // TODO: replace with the real repository URL.
     githubUrl: "https://github.com/jouwusername/warehouse-insights",
     heroImage: {
       src: "/screenshots/warehouse-insights-dashboard.png",
@@ -126,6 +144,7 @@ export const projects: Project[] = [
         alt: "Orders overview with search, a status filter and an editable status per order",
       },
     ],
+    featured: false,
     caseStudy: {
       problem: [
         "Most warehouses work with multiple disconnected systems for managing orders and inventory. This spreads data across different locations, making it difficult to get a clear overview or perform actions like updating stock when an order is placed. Warehouse Insights solves this by bringing everything into one real-time dashboard.",
@@ -142,8 +161,16 @@ export const projects: Project[] = [
       ],
     },
   },
-];
+] as const satisfies readonly Project[];
 
-export function getProject(slug: string) {
+export const featuredProject: Project | undefined = projects.find(
+  (project) => project.featured,
+);
+
+export const otherProjects: readonly Project[] = projects.filter(
+  (project) => !project.featured,
+);
+
+export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }

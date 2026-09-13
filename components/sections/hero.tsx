@@ -3,56 +3,28 @@ import Link from "next/link";
 import { ProjectBadge } from "@/components/projects/ProjectBadge";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
+import { content } from "@/lib/content";
 
-type HeroProps = {
-  name: string;
-};
+const { hero } = content;
 
-const steps = [
-  {
-    title: "Plan",
-    description: "A written spec you approve before I write any code.",
-  },
-  {
-    title: "Build",
-    description:
-      "Working features you can test every week, not a surprise at the end.",
-  },
-  {
-    title: "Launch",
-    description: "Live on your domain, with documentation to hand over.",
-  },
-];
-
-const stack = [
-  "Full-stack Next.js",
-  "Databases",
-  "Authentication",
-  "AI integration",
-  "Real-time",
-];
-
-export default function Hero({ name }: HeroProps) {
+export default function Hero() {
   return (
     <section id="hero" className="px-6 py-xl sm:px-xl sm:py-2xl">
       <div className="grid items-center gap-xl lg:grid-cols-[1.1fr_1fr]">
         <div>
           <FadeIn>
-            <p className="mb-md text-small text-muted">Hi, I&apos;m {name} —</p>
+            <p className="mb-md text-small text-muted">{hero.greeting}</p>
           </FadeIn>
 
           <FadeIn delay={0.1}>
             <h1 className="mb-lg max-w-[23ch] text-h1 font-bold text-foreground">
-              Your idea, built and live — by one developer who plans before he
-              codes.
+              {hero.tagline}
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
             <p className="mb-lg max-w-[60ch] text-body text-muted">
-              I build web apps and SaaS products for startups and small
-              businesses. Every project starts with a written spec, so you know
-              exactly what you&apos;re getting before I write a line of code.
+              {hero.subtitle}
             </p>
           </FadeIn>
 
@@ -60,40 +32,38 @@ export default function Hero({ name }: HeroProps) {
             <Button
               size="lg"
               nativeButton={false}
-              render={<Link href="#contact" />}
+              render={<Link href={hero.cta.primary.href} />}
             >
-              Let&apos;s talk
+              {hero.cta.primary.label}
             </Button>
             <Button
               variant="link"
               nativeButton={false}
-              render={<Link href="#projects" />}
+              render={<Link href={hero.cta.secondary.href} />}
             >
-              See my work ↓
+              {hero.cta.secondary.label}
             </Button>
           </FadeIn>
         </div>
 
         <FadeIn delay={0.4}>
           <aside
-            aria-label="How I work"
+            aria-label={hero.process.label}
             className="flex flex-col gap-lg rounded-lg border border-border bg-surface p-lg"
           >
             <div className="flex items-center justify-between gap-md">
-              <p className="text-small text-muted">
-                Three applications shipped
-              </p>
+              <p className="text-small text-muted">{hero.process.summary}</p>
               <span className="inline-flex items-center gap-sm rounded-full border border-primary/20 bg-primary/10 px-sm py-xs">
                 <span
                   className="size-sm shrink-0 rounded-full bg-primary"
                   aria-hidden="true"
                 />
-                <small className="text-primary">Available</small>
+                <small className="text-primary">{hero.badge}</small>
               </span>
             </div>
 
             <ol className="flex flex-col">
-              {steps.map((step, index) => (
+              {hero.process.steps.map((step, index) => (
                 <li
                   key={step.title}
                   className="flex items-baseline gap-md border-b border-border py-md first:pt-0 last:border-b-0 last:pb-0"
@@ -114,9 +84,9 @@ export default function Hero({ name }: HeroProps) {
             </ol>
 
             <div className="flex flex-col gap-sm border-t border-border pt-lg">
-              <p className="text-small text-muted">Stack</p>
+              <p className="text-small text-muted">{hero.process.stackLabel}</p>
               <ul className="flex flex-wrap gap-sm">
-                {stack.map((tech) => (
+                {hero.process.stack.map((tech) => (
                   <li key={tech}>
                     <ProjectBadge label={tech} />
                   </li>

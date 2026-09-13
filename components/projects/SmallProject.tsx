@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
+import type { Screenshot } from "@/lib/projects";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
 
@@ -8,7 +9,7 @@ interface SmallProjectProps {
   slug: string;
   title: string;
   description: string;
-  image: string;
+  image: Screenshot;
   badges: string[];
   liveUrl: string;
   githubUrl: string;
@@ -31,8 +32,8 @@ export function SmallProject({
         <ProjectImageTransition slug={slug}>
           <div className="relative h-40">
             <Image
-              src={image}
-              alt={`${title} screenshot`}
+              src={image.src}
+              alt={image.alt}
               fill
               sizes="50vw"
               className="object-cover"

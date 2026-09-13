@@ -6,7 +6,7 @@ import ProjectsSection from "@/components/projects/ProjectsSection";
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-6xl">
-      <Hero name="Badr" />
+      <Hero />
       <ProjectsSection />
       <About />
       <Contact />

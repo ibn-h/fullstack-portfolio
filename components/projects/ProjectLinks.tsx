@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { content } from "@/lib/content";
 import {
   IconArrowRight,
   IconBrandGithub,
   IconExternalLink,
 } from "@tabler/icons-react";
+
+const { links } = content.projects;
 
 interface ProjectLinksProps {
   liveUrl: string;
@@ -29,7 +32,7 @@ export function ProjectLinks({
         className="border-border text-muted hover:text-text hover:border-text"
       >
         <IconExternalLink aria-hidden="true" />
-        Live
+        {links.live}
       </Button>
       {!featured && (
         <Button
@@ -42,7 +45,7 @@ export function ProjectLinks({
           className="border-border text-muted hover:text-text hover:border-text"
         >
           <IconBrandGithub aria-hidden="true" />
-          <span className="sr-only">View source on GitHub</span>
+          <span className="sr-only">{links.source}</span>
         </Button>
       )}
       <Button
@@ -52,7 +55,7 @@ export function ProjectLinks({
         render={<Link href={caseStudyUrl} />}
         className="border-border text-muted hover:text-text hover:border-text"
       >
-        Case study
+        {links.caseStudy}
         <IconArrowRight aria-hidden="true" />
       </Button>
     </div>

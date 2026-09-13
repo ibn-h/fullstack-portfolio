@@ -12,7 +12,7 @@
 - [x] Take Hairsalon Booking screenshots
 - [x] Write Warehouse Insights description
 - [x] Work out Warehouse Insights case study
-- [ ] Take Warehouse Insights screenshots
+- [x] Take Warehouse Insights screenshots
 
 ### General
 - [x] Write bio (EN + NL)
@@ -47,7 +47,7 @@
 - [x] Build form (name, email, message)
 - [x] Form validation
 - [x] Send email via Resend or Nodemailer
-- [ ] Confirmation message after submission
+- [x] Confirmation message after submission
 
 ## Milestone 3 — SEO
 

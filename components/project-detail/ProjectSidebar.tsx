@@ -1,11 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { content } from "@/lib/content";
 import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
+
+const labels = content.projectDetail.sidebar;
 
 interface ProjectSidebarProps {
   role: string;
-  stack: string[];
+  timeline: string;
+  stack: readonly string[];
   liveUrl: string;
   githubUrl: string;
 }
@@ -18,6 +22,7 @@ function MetaLabel({ children }: { children: React.ReactNode }) {
 
 export function ProjectSidebar({
   role,
+  timeline,
   stack,
   liveUrl,
   githubUrl,
@@ -26,12 +31,19 @@ export function ProjectSidebar({
     <Card className="bg-surface border-border">
       <CardContent className="flex flex-col gap-md">
         <div className="flex flex-col gap-xs">
-          <MetaLabel>Role</MetaLabel>
+          <MetaLabel>{labels.role}</MetaLabel>
           <p className="text-text text-small">{role}</p>
         </div>
 
+        {timeline && (
+          <div className="flex flex-col gap-xs">
+            <MetaLabel>{labels.timeline}</MetaLabel>
+            <p className="text-text text-small">{timeline}</p>
+          </div>
+        )}
+
         <div className="flex flex-col gap-xs">
-          <MetaLabel>Stack</MetaLabel>
+          <MetaLabel>{labels.stack}</MetaLabel>
           <div className="flex flex-wrap gap-xs">
             {stack.map((item) => (
               <Badge
@@ -56,7 +68,7 @@ export function ProjectSidebar({
             className="border-border text-muted hover:text-text hover:border-text w-full"
           >
             <IconExternalLink aria-hidden="true" />
-            Live site
+            {labels.live}
           </Button>
           <Button
             variant="outline"
@@ -68,7 +80,7 @@ export function ProjectSidebar({
             className="border-border text-muted hover:text-text hover:border-text w-full"
           >
             <IconBrandGithub aria-hidden="true" />
-            Source
+            {labels.source}
           </Button>
         </div>
       </CardContent>

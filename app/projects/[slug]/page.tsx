@@ -5,6 +5,7 @@ import { CaseStudySection } from "@/components/project-detail/CaseStudySection";
 import { ProjectGallery } from "@/components/project-detail/ProjectGallery";
 import { ProjectHeader } from "@/components/project-detail/ProjectHeader";
 import { ProjectSidebar } from "@/components/project-detail/ProjectSidebar";
+import { content } from "@/lib/content";
 import { getProject, projects } from "@/lib/projects";
 
 // Only the slugs from generateStaticParams exist — anything else is a 404.
@@ -42,6 +43,7 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
           <BackLink />
           <ProjectSidebar
             role={project.role}
+            timeline={project.timeline}
             stack={project.stack}
             liveUrl={project.liveUrl}
             githubUrl={project.githubUrl}
@@ -55,19 +57,13 @@ export default async function Page({ params }: PageProps<"/projects/[slug]">) {
             tagline={project.tagline}
             heroImage={project.heroImage}
           />
-          <CaseStudySection
-            title="Problem"
-            content={project.caseStudy.problem}
-          />
-          <CaseStudySection
-            title="Approach"
-            content={project.caseStudy.approach}
-          />
-          <CaseStudySection
-            title="Challenge"
-            content={project.caseStudy.challenge}
-          />
-          <CaseStudySection title="Result" content={project.caseStudy.result} />
+          {content.projectDetail.caseStudy.map(({ id, title }) => (
+            <CaseStudySection
+              key={id}
+              title={title}
+              content={project.caseStudy[id]}
+            />
+          ))}
           <ProjectGallery images={project.gallery} />
         </div>
       </div>

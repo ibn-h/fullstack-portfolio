@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Screenshot } from "@/lib/projects";
 
 interface ProjectGalleryProps {
-  images: Screenshot[];
+  images: readonly Screenshot[];
 }
 
 export function ProjectGallery({ images }: ProjectGalleryProps) {

@@ -1,7 +1,7 @@
 interface CaseStudySectionProps {
   title: string;
   /** One entry per paragraph. */
-  content: string[];
+  content: readonly string[];
 }
 
 export function CaseStudySection({ title, content }: CaseStudySectionProps) {

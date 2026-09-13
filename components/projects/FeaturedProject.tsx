@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
+import { content } from "@/lib/content";
+import type { Screenshot } from "@/lib/projects";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
 
@@ -8,7 +10,7 @@ interface FeaturedProjectProps {
   slug: string;
   title: string;
   description: string;
-  image: string;
+  image: Screenshot;
   badges: string[];
   liveUrl: string;
   githubUrl: string;
@@ -31,8 +33,8 @@ export function FeaturedProject({
         <ProjectImageTransition slug={slug}>
           <div className="relative h-70">
             <Image
-              src={image}
-              alt={`${title} screenshot`}
+              src={image.src}
+              alt={image.alt}
               fill
               sizes="50vw"
               priority
@@ -41,7 +43,9 @@ export function FeaturedProject({
           </div>
         </ProjectImageTransition>
         <div className="p-8 flex flex-col justify-center gap-4">
-          <small className="text-muted">Featured project</small>
+          <small className="text-muted">
+            {content.projects.featuredLabel}
+          </small>
           <h3 className="text-text m-0">{title}</h3>
           <p className="text-muted text-sm leading-relaxed m-0">
             {description}

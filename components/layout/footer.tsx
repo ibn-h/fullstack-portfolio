@@ -1,34 +1,16 @@
 import Link from "next/link";
-import {
-  IconArrowUp,
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconMail,
-} from "@tabler/icons-react";
+import { IconArrowUp } from "@tabler/icons-react";
+
+import { socialIcons } from "@/components/icons/social-icons";
+import { content } from "@/lib/content";
+import { site, visibleSocials } from "@/lib/site";
+
+const { footer } = content;
 
 const navItems = [
   { label: "Projects", href: "/#projects" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
-];
-
-// TODO: swap in your own profile URLs and address (same values as contact.tsx).
-const socials = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/jouwusername",
-    icon: IconBrandLinkedin,
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/jouwusername",
-    icon: IconBrandGithub,
-  },
-  {
-    label: "Email",
-    href: "mailto:hello@example.com",
-    icon: IconMail,
-  },
 ];
 
 export function Footer() {
@@ -45,24 +27,23 @@ export function Footer() {
                 className="size-sm rounded-full bg-primary"
                 aria-hidden="true"
               />
-              Badr
+              {site.name}
             </Link>
-            <p className="text-small text-muted">
-              Full-stack developer building web apps that ship — from first
-              sketch to production.
-            </p>
+            <p className="text-small text-muted">{footer.tagline}</p>
             <div className="inline-flex items-center gap-sm">
               <span
                 className="size-sm shrink-0 rounded-full bg-primary"
                 aria-hidden="true"
               />
-              <small className="text-primary">Available for new projects</small>
+              <small className="text-primary">{footer.badge}</small>
             </div>
           </div>
 
           <div className="flex flex-col gap-lg sm:flex-row sm:gap-xl">
             <nav aria-label="Footer" className="flex flex-col gap-sm">
-              <p className="text-small font-semibold text-text">Navigate</p>
+              <p className="text-small font-semibold text-text">
+                {footer.navLabel}
+              </p>
               {navItems.map(({ label, href }) => (
                 <Link
                   key={href}
@@ -75,32 +56,41 @@ export function Footer() {
             </nav>
 
             <div className="flex flex-col gap-sm">
-              <p className="text-small font-semibold text-text">Elsewhere</p>
-              {socials.map(({ label, href, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-sm text-small text-muted transition-colors hover:text-text"
-                >
-                  <Icon className="size-md" aria-hidden="true" />
-                  {label}
-                </a>
-              ))}
+              <p className="text-small font-semibold text-text">
+                {footer.socialsLabel}
+              </p>
+              {visibleSocials.map(({ label, href, icon }) => {
+                const Icon = socialIcons[icon];
+
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-sm text-small text-muted transition-colors hover:text-text"
+                  >
+                    <Icon className="size-md" aria-hidden="true" />
+                    {label}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-sm border-t border-border pt-md sm:flex-row sm:items-center sm:justify-between">
           <small className="text-muted">
-            © {new Date().getFullYear()} Badr. Built with Next.js and Tailwind.
+            {footer.copyright.replace(
+              "{year}",
+              String(new Date().getFullYear()),
+            )}
           </small>
           <a
             href="#top"
             className="inline-flex items-center gap-xs text-small text-muted transition-colors hover:text-text"
           >
-            Back to top
+            {footer.backToTop}
             <IconArrowUp className="size-md" aria-hidden="true" />
           </a>
         </div>

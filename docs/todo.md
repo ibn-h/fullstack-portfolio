@@ -1,8 +1,10 @@
 ## Not Started
 
-- [ ] Replace project images
+- [ ] Design projects page
 
 ## In Progress
+
+- [ ] Replace project images
 
 ## Bugs
 

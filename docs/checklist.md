@@ -41,7 +41,7 @@
 
 ### Animations - 30m
 - [x] Hero animation
-- [ ] Page transition animations
+- [x] Page transition animations
 
 ### Contact form - 30m
 - [x] Build form (name, email, message)
@@ -60,6 +60,7 @@
 
 ## Milestone 4 — Pre-launch
 
+- [ ] Review website content and confirm it meets requirements (Professional, authentic, convincing)
 - [ ] Tested responsive on mobile, tablet, desktop
 - [ ] All links tested
 - [ ] Contact form tested

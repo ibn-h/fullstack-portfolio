@@ -42,12 +42,12 @@ export const projects: Project[] = [
     },
     gallery: [
       {
-        src: "/screenshots/y2notion-summary.png",
-        alt: "Generated Markdown summary of a JavaScript video with Copy and Save to Notion actions",
+        src: "/screenshots/y2notion-homepage-summary.png",
+        alt: "Notion location picker opened above a summary, with the YouTube Summaries page selected",
       },
       {
-        src: "/screenshots/y2notion-save-to-notion.png",
-        alt: "Notion location picker opened above a summary, with the YouTube Summaries page selected",
+        src: "/screenshots/y2notion-summary.png",
+        alt: "Generated Markdown summary of a JavaScript video with Copy and Save to Notion actions",
       },
     ],
     caseStudy: {
@@ -82,12 +82,8 @@ export const projects: Project[] = [
     },
     gallery: [
       {
-        src: "/screenshots/hairsalon-reservation-form.png",
+        src: "/screenshots/hairsalon-form.png",
         alt: "Reservation form with name, phone, email, service, date and timeslot fields",
-      },
-      {
-        src: "/screenshots/hairsalon-confirmation.png",
-        alt: "Reservation confirmed message shown to the customer after booking",
       },
       {
         src: "/screenshots/hairsalon-dashboard.png",
@@ -126,7 +122,7 @@ export const projects: Project[] = [
     // TODO: add the remaining screenshots once they're taken
     gallery: [
       {
-        src: "/screenshots/warehouse-insights-orders.png",
+        src: "/screenshots/warehouse-orders.png",
         alt: "Orders overview with search, a status filter and an editable status per order",
       },
     ],

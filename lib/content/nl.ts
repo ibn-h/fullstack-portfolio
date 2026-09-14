@@ -28,7 +28,8 @@ export const nl = {
 
   hero: {
     greeting: `Hallo, ik ben ${site.name},`,
-    tagline: "Full-stack developer",
+    tagline: "Next.js developer voor startups en kleine bedrijven.",
+    taglineHighlight: "startups en kleine bedrijven",
     subtitle:
       "Ik bouw webapps en SaaS-producten voor startups en kleine bedrijven. Elk project begint met een geschreven specificatie, zodat je precies weet wat je krijgt voordat ik één regel code schrijf.",
     cta: {
@@ -38,9 +39,13 @@ export const nl = {
     badge: "Beschikbaar",
     profile: {
       label: "Over mij in het kort",
-      summary: "Profiel",
+      terminal: {
+        title: "profiel.txt",
+        host: "portfolio",
+        profileCommand: "whoami",
+        stackCommand: "cat stack.txt",
+      },
       rows: [
-        { label: "Naam", value: site.name },
         { label: "Rol", value: "Full-stack developer" },
         { label: "Leeftijd", value: "19" },
         { label: "Ervaring", value: "2+ jaar, zelfgeleerd" },
@@ -48,7 +53,6 @@ export const nl = {
         { label: "Talen", value: "Nederlands, Engels" },
         { label: "Reactietijd", value: "Binnen 24 uur" },
       ],
-      stackLabel: "Stack",
       stack: [
         "Full-stack Next.js",
         "Databases",

@@ -34,7 +34,7 @@ export const projectsNl = {
     },
   },
   "hairsalon-booking": {
-    title: "Kapsalon-reserveringen",
+    title: "Kapsalon Reserveringen",
     tagline:
       "Reserveringssysteem met bevestigingsmails en een beveiligd dashboard voor de barbier.",
     description:

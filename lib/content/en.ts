@@ -28,8 +28,9 @@ export const en = {
 
   hero: {
     greeting: `Hi, I'm ${site.name},`,
-    tagline:
-      "Your idea, built and live, by one developer who plans before he codes.",
+    tagline: "Next.js developer for startups and small businesses.",
+    // Part of the tagline shown in the primary color; must appear in it verbatim.
+    taglineHighlight: "startups and small businesses",
     subtitle:
       "I build web apps and SaaS products for startups and small businesses. Every project starts with a written spec, so you know exactly what you're getting before I write a line of code.",
     cta: {
@@ -39,10 +40,15 @@ export const en = {
     badge: "Available",
     profile: {
       label: "About me at a glance",
-      summary: "Profile",
+      // Terminal window chrome around the profile; the prompt user is site.name.
+      terminal: {
+        title: "profile.txt",
+        host: "portfolio",
+        profileCommand: "whoami",
+        stackCommand: "cat stack.txt",
+      },
       // Rendered as a two-column table, in this order.
       rows: [
-        { label: "Name", value: site.name },
         { label: "Role", value: "Full-stack developer" },
         { label: "Age", value: "19" },
         { label: "Experience", value: "2+ years, self-taught" },
@@ -50,7 +56,6 @@ export const en = {
         { label: "Languages", value: "Dutch, English" },
         { label: "Response time", value: "Within 24 hours" },
       ],
-      stackLabel: "Stack",
       stack: [
         "Full-stack Next.js",
         "Databases",

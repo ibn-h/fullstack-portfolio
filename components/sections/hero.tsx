@@ -3,9 +3,38 @@ import Link from "next/link";
 import { ProjectBadge } from "@/components/projects/ProjectBadge";
 import { Button } from "@/components/ui/button";
 import { getContent } from "@/lib/i18n/server";
+import { site } from "@/lib/site";
+
+const promptUser = site.name.toLowerCase();
+
+function Prompt({ host, command }: { host: string; command: string }) {
+  return (
+    <p>
+      <span className="text-primary">
+        {promptUser}@{host}
+      </span>
+      <span className="text-muted">:~$</span>{" "}
+      <span className="text-text">{command}</span>
+    </p>
+  );
+}
+
+function Highlighted({ text, highlight }: { text: string; highlight: string }) {
+  const start = highlight ? text.indexOf(highlight) : -1;
+  if (start === -1) return text;
+
+  return (
+    <>
+      {text.slice(0, start)}
+      <span className="text-primary">{highlight}</span>
+      {text.slice(start + highlight.length)}
+    </>
+  );
+}
 
 export default async function Hero() {
   const { hero } = await getContent();
+  const { terminal } = hero.profile;
 
   return (
     <section id="hero" className="px-6 py-xl sm:px-xl sm:py-2xl">
@@ -19,7 +48,10 @@ export default async function Hero() {
 
           <div className="hero-enter" style={{ animationDelay: "100ms" }}>
             <h1 className="mb-lg max-w-[23ch] text-h1 font-bold text-foreground">
-              {hero.tagline}
+              <Highlighted
+                text={hero.tagline}
+                highlight={hero.taglineHighlight}
+              />
             </h1>
           </div>
 
@@ -53,50 +85,63 @@ export default async function Hero() {
         <div className="hero-enter" style={{ animationDelay: "400ms" }}>
           <aside
             aria-label={hero.profile.label}
-            className="flex flex-col gap-lg rounded-lg border border-border bg-surface p-lg"
+            className="overflow-hidden rounded-lg border border-border bg-surface font-mono text-small"
           >
-            <div className="flex items-center justify-between gap-md">
-              <p className="text-small text-muted">{hero.profile.summary}</p>
-              <span className="inline-flex items-center gap-sm rounded-full border border-primary/20 bg-primary/10 px-sm py-xs">
+            <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-sm border-b border-border px-md py-sm">
+              <span className="flex gap-sm" aria-hidden="true">
+                <span className="size-sm rounded-full bg-border" />
+                <span className="size-sm rounded-full bg-border" />
+                <span className="size-sm rounded-full bg-border" />
+              </span>
+              <p className="text-muted">{terminal.title}</p>
+            </div>
+
+            <div className="flex flex-col gap-md p-lg">
+              <div className="flex flex-col gap-sm">
+                <Prompt host={terminal.host} command={terminal.profileCommand} />
+
+                <table className="w-full border-collapse text-left">
+                  <caption className="sr-only">{hero.profile.label}</caption>
+                  <tbody>
+                    {hero.profile.rows.map((row) => (
+                      <tr key={row.label}>
+                        <th
+                          scope="row"
+                          className="w-2/5 py-xs pr-md align-baseline font-normal text-muted"
+                        >
+                          {row.label}
+                        </th>
+                        <td className="py-xs align-baseline text-text">
+                          {row.value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="flex flex-col gap-sm">
+                <Prompt host={terminal.host} command={terminal.stackCommand} />
+
+                <ul className="flex flex-wrap gap-sm">
+                  {hero.profile.stack.map((tech) => (
+                    <li key={tech}>
+                      <ProjectBadge label={tech} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="flex items-center gap-sm text-primary">
                 <span
                   className="size-sm shrink-0 rounded-full bg-primary"
                   aria-hidden="true"
                 />
-                <small className="text-primary">{hero.badge}</small>
-              </span>
-            </div>
-
-            <table className="w-full border-collapse text-left">
-              <caption className="sr-only">{hero.profile.label}</caption>
-              <tbody>
-                {hero.profile.rows.map((row) => (
-                  <tr
-                    key={row.label}
-                    className="border-b border-border last:border-b-0"
-                  >
-                    <th
-                      scope="row"
-                      className="w-2/5 py-sm pr-md align-baseline text-small font-normal text-muted"
-                    >
-                      {row.label}
-                    </th>
-                    <td className="py-sm align-baseline text-body font-medium text-text">
-                      {row.value}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <div className="flex flex-col gap-sm border-t border-border pt-lg">
-              <p className="text-small text-muted">{hero.profile.stackLabel}</p>
-              <ul className="flex flex-wrap gap-sm">
-                {hero.profile.stack.map((tech) => (
-                  <li key={tech}>
-                    <ProjectBadge label={tech} />
-                  </li>
-                ))}
-              </ul>
+                {hero.badge}
+                <span className="cursor-blink text-text" aria-hidden="true">
+                  _
+                </span>
+              </p>
             </div>
           </aside>
         </div>

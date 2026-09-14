@@ -175,6 +175,17 @@
   }
 }
 
+/* Blinking cursor at the end of the hero terminal card. */
+.cursor-blink {
+  animation: 1s step-end infinite cursor-blink;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 /**
  * The one place animations are switched off for `prefers-reduced-motion`.
  *
@@ -194,7 +205,8 @@
     transform: none !important;
   }
 
-  .hero-enter {
+  .hero-enter,
+  .cursor-blink {
     animation: none;
   }
 

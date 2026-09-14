@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
 import { OgCard, ogSize } from "@/components/seo/OgImage";
+import { localeOrDefault } from "@/lib/i18n/config";
 import { resolveLocale } from "@/lib/i18n/resolve-locale";
 import { getProject } from "@/lib/projects";
 import { defaultTitle } from "@/lib/seo";
@@ -9,10 +10,10 @@ import { defaultTitle } from "@/lib/seo";
 export function generateImageMetadata({
   params,
 }: {
-  params: { lang: string; slug: string };
+  params: { lang?: string; slug?: string };
 }) {
-  const locale = resolveLocale(params.lang);
-  const project = getProject(locale, params.slug);
+  const locale = localeOrDefault(params.lang);
+  const project = params.slug ? getProject(locale, params.slug) : undefined;
 
   return [
     {

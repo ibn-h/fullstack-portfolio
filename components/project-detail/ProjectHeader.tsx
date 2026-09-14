@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
-import type { Screenshot } from "@/lib/projects";
+import { screenshotStyle, type Screenshot } from "@/lib/projects";
 
 interface ProjectHeaderProps {
   slug: string;
@@ -20,7 +20,7 @@ export function ProjectHeader({
       <h1 className="text-text">{title}</h1>
       <p className="text-muted mt-sm">{tagline}</p>
       <ProjectImageTransition slug={slug}>
-        <div className="relative mt-md aspect-video w-full">
+        <div className="relative mt-md aspect-video w-full overflow-hidden rounded-lg">
           <Image
             src={heroImage.src}
             alt={heroImage.alt}
@@ -28,6 +28,7 @@ export function ProjectHeader({
             sizes="(min-width: 768px) 60vw, 100vw"
             priority
             className="rounded-lg object-cover"
+            style={screenshotStyle(heroImage)}
           />
         </div>
       </ProjectImageTransition>

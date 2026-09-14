@@ -18,6 +18,14 @@ export function hasLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
+/**
+ * For code that must not 404, like `generateImageMetadata`: Next calls it with
+ * empty params while collecting image ids at build time.
+ */
+export function localeOrDefault(value: string | undefined): Locale {
+  return value !== undefined && hasLocale(value) ? value : defaultLocale;
+}
+
 /** `/projects` stays `/projects` for the default locale and becomes `/nl/projects` for Dutch. */
 export function localizePath(locale: Locale, path: string): string {
   if (locale === defaultLocale) return path;

@@ -6,7 +6,6 @@ import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
 
 interface ProjectSidebarProps {
   role: string;
-  timeline: string;
   stack: readonly string[];
   liveUrl: string;
   githubUrl: string;
@@ -20,7 +19,6 @@ function MetaLabel({ children }: { children: React.ReactNode }) {
 
 export async function ProjectSidebar({
   role,
-  timeline,
   stack,
   liveUrl,
   githubUrl,
@@ -34,13 +32,6 @@ export async function ProjectSidebar({
           <MetaLabel>{labels.role}</MetaLabel>
           <p className="text-text text-small">{role}</p>
         </div>
-
-        {timeline && (
-          <div className="flex flex-col gap-xs">
-            <MetaLabel>{labels.timeline}</MetaLabel>
-            <p className="text-text text-small">{timeline}</p>
-          </div>
-        )}
 
         <div className="flex flex-col gap-xs">
           <MetaLabel>{labels.stack}</MetaLabel>

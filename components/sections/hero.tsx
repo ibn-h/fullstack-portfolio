@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { ProjectBadge } from "@/components/projects/ProjectBadge";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/ui/fade-in";
 import { getContent } from "@/lib/i18n/server";
 
 export default async function Hero() {
@@ -12,23 +11,28 @@ export default async function Hero() {
     <section id="hero" className="px-6 py-xl sm:px-xl sm:py-2xl">
       <div className="grid items-center gap-xl lg:grid-cols-[1.1fr_1fr]">
         <div>
-          <FadeIn>
+          {/* CSS animations, not Motion: they start at first paint instead of
+              waiting for hydration, so the h1 (the LCP element) shows early. */}
+          <div className="hero-enter">
             <p className="mb-md text-small text-muted">{hero.greeting}</p>
-          </FadeIn>
+          </div>
 
-          <FadeIn delay={0.1}>
+          <div className="hero-enter" style={{ animationDelay: "100ms" }}>
             <h1 className="mb-lg max-w-[23ch] text-h1 font-bold text-foreground">
               {hero.tagline}
             </h1>
-          </FadeIn>
+          </div>
 
-          <FadeIn delay={0.2}>
+          <div className="hero-enter" style={{ animationDelay: "200ms" }}>
             <p className="mb-lg max-w-[60ch] text-body text-muted">
               {hero.subtitle}
             </p>
-          </FadeIn>
+          </div>
 
-          <FadeIn delay={0.3} className="flex items-center gap-lg">
+          <div
+            className="hero-enter flex items-center gap-lg"
+            style={{ animationDelay: "300ms" }}
+          >
             <Button
               size="lg"
               nativeButton={false}
@@ -43,16 +47,16 @@ export default async function Hero() {
             >
               {hero.cta.secondary.label}
             </Button>
-          </FadeIn>
+          </div>
         </div>
 
-        <FadeIn delay={0.4}>
+        <div className="hero-enter" style={{ animationDelay: "400ms" }}>
           <aside
-            aria-label={hero.process.label}
+            aria-label={hero.profile.label}
             className="flex flex-col gap-lg rounded-lg border border-border bg-surface p-lg"
           >
             <div className="flex items-center justify-between gap-md">
-              <p className="text-small text-muted">{hero.process.summary}</p>
+              <p className="text-small text-muted">{hero.profile.summary}</p>
               <span className="inline-flex items-center gap-sm rounded-full border border-primary/20 bg-primary/10 px-sm py-xs">
                 <span
                   className="size-sm shrink-0 rounded-full bg-primary"
@@ -62,31 +66,32 @@ export default async function Hero() {
               </span>
             </div>
 
-            <ol className="flex flex-col">
-              {hero.process.steps.map((step, index) => (
-                <li
-                  key={step.title}
-                  className="flex items-baseline gap-md border-b border-border py-md first:pt-0 last:border-b-0 last:pb-0"
-                >
-                  <span className="font-mono text-small text-primary tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex flex-col gap-xs">
-                    <span className="text-body font-medium text-text">
-                      {step.title}
-                    </span>
-                    <span className="text-small text-muted">
-                      {step.description}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ol>
+            <table className="w-full border-collapse text-left">
+              <caption className="sr-only">{hero.profile.label}</caption>
+              <tbody>
+                {hero.profile.rows.map((row) => (
+                  <tr
+                    key={row.label}
+                    className="border-b border-border last:border-b-0"
+                  >
+                    <th
+                      scope="row"
+                      className="w-2/5 py-sm pr-md align-baseline text-small font-normal text-muted"
+                    >
+                      {row.label}
+                    </th>
+                    <td className="py-sm align-baseline text-body font-medium text-text">
+                      {row.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
             <div className="flex flex-col gap-sm border-t border-border pt-lg">
-              <p className="text-small text-muted">{hero.process.stackLabel}</p>
+              <p className="text-small text-muted">{hero.profile.stackLabel}</p>
               <ul className="flex flex-wrap gap-sm">
-                {hero.process.stack.map((tech) => (
+                {hero.profile.stack.map((tech) => (
                   <li key={tech}>
                     <ProjectBadge label={tech} />
                   </li>
@@ -94,7 +99,7 @@ export default async function Hero() {
               </ul>
             </div>
           </aside>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

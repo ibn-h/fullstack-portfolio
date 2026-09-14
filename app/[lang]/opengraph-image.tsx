@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { OgCard, ogSize } from "@/components/seo/OgImage";
 import { contentByLocale } from "@/lib/content";
+import { localeOrDefault } from "@/lib/i18n/config";
 import { resolveLocale } from "@/lib/i18n/resolve-locale";
 import { defaultTitle } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -9,12 +10,12 @@ import { site } from "@/lib/site";
 export function generateImageMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: { lang?: string };
 }) {
   return [
     {
       id: "og",
-      alt: defaultTitle(resolveLocale(params.lang)),
+      alt: defaultTitle(localeOrDefault(params.lang)),
       size: ogSize,
       contentType: "image/png",
     },
@@ -34,7 +35,7 @@ export default async function Image({
         eyebrow={meta.role}
         title={site.name}
         subtitle={hero.tagline}
-        tags={hero.process.stack}
+        tags={hero.profile.stack}
       />
     ),
     ogSize,

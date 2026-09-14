@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
 import { getContent } from "@/lib/i18n/server";
-import type { Screenshot } from "@/lib/projects";
+import { screenshotStyle, type Screenshot } from "@/lib/projects";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
 
@@ -33,7 +33,7 @@ export async function FeaturedProject({
     <Card className="bg-surface border-border overflow-hidden py-0">
       <CardContent className="p-0 grid grid-cols-2">
         <ProjectImageTransition slug={slug}>
-          <div className="relative h-70">
+          <div className="relative h-70 overflow-hidden">
             <Image
               src={image.src}
               alt={image.alt}
@@ -41,6 +41,7 @@ export async function FeaturedProject({
               sizes="50vw"
               priority
               className="object-cover"
+              style={screenshotStyle(image)}
             />
           </div>
         </ProjectImageTransition>

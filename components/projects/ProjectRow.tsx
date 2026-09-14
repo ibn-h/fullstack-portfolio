@@ -5,7 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { contentByLocale } from "@/lib/content";
 import { localizePath } from "@/lib/i18n/config";
 import { getLocale } from "@/lib/i18n/server";
-import { caseStudyExcerpt, type Project } from "@/lib/projects";
+import {
+  caseStudyExcerpt,
+  screenshotStyle,
+  type Project,
+} from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
@@ -32,7 +36,7 @@ export async function ProjectRow({ project, index }: ProjectRowProps) {
             tabIndex={-1}
             aria-hidden="true"
             className={cn(
-              "relative block aspect-video md:aspect-auto md:min-h-80",
+              "relative block aspect-video overflow-hidden md:aspect-auto md:min-h-80",
               reversed && "md:order-last",
             )}
           >
@@ -43,6 +47,7 @@ export async function ProjectRow({ project, index }: ProjectRowProps) {
               sizes="(min-width: 768px) 50vw, 100vw"
               priority={index === 0}
               className="object-cover"
+              style={screenshotStyle(project.heroImage)}
             />
           </Link>
         </ProjectImageTransition>

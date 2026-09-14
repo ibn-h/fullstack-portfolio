@@ -160,6 +160,22 @@
 }
 
 /**
+ * Hero entrance. Plain CSS rather than Motion: a JS animation keeps the h1 —
+ * the page's LCP element — at `opacity: 0` until hydration. Stagger each
+ * element with an inline `animation-delay`.
+ */
+.hero-enter {
+  animation: 500ms ease-out both hero-enter;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/**
  * The one place animations are switched off for `prefers-reduced-motion`.
  *
  * Motion cannot know the preference until it hydrates, so the hidden `initial`
@@ -176,6 +192,10 @@
   [data-animated] {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .hero-enter {
+    animation: none;
   }
 
   /* Routes swap instantly, as they would without view transitions. */

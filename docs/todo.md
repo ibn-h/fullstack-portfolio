@@ -3,6 +3,8 @@
 ## In Progress
 
 - [ ] Review website content and confirm it meets requirements (Professional, authentic, convincing)
+- [ ] **Fix project images**
+- [ ] Change hero section
 
 ## Bugs
 

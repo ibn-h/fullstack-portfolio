@@ -80,7 +80,6 @@ export default async function Page({
           <BackLink />
           <ProjectSidebar
             role={project.role}
-            timeline={project.timeline}
             stack={project.stack}
             liveUrl={project.liveUrl}
             githubUrl={project.githubUrl}

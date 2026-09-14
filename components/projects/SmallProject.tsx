@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
-import type { Screenshot } from "@/lib/projects";
+import { screenshotStyle, type Screenshot } from "@/lib/projects";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
 
@@ -30,13 +30,14 @@ export function SmallProject({
     <Card className="bg-surface border-border overflow-hidden py-0">
       <CardContent className="p-0">
         <ProjectImageTransition slug={slug}>
-          <div className="relative h-40">
+          <div className="relative h-40 overflow-hidden">
             <Image
               src={image.src}
               alt={image.alt}
               fill
               sizes="50vw"
               className="object-cover"
+              style={screenshotStyle(image)}
             />
           </div>
         </ProjectImageTransition>

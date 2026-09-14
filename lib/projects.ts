@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { projectsEn } from "./content/projects-en";
 import { projectsNl } from "./content/projects-nl";
 import type { Locale } from "./i18n/config";
@@ -5,6 +6,18 @@ import type { Locale } from "./i18n/config";
 export interface Screenshot {
   src: string;
   alt: string;
+  /** Scales the image up from its top edge, e.g. `1.2` for 20% larger. */
+  zoom?: number;
+}
+
+/** Inline style for a screenshot's `<Image>`. Its wrapper must clip overflow. */
+export function screenshotStyle({ zoom }: Screenshot): CSSProperties {
+  if (!zoom) return {};
+  return {
+    objectPosition: "top",
+    transform: `scale(${zoom})`,
+    transformOrigin: "top",
+  };
 }
 
 /** Each entry is one paragraph. */
@@ -70,6 +83,8 @@ interface ProjectData {
   githubUrl: string;
   heroImage: string;
   gallery: readonly string[];
+  /** Applied to the hero image and every gallery image. */
+  imageZoom?: number;
   featured: boolean;
 }
 
@@ -109,6 +124,7 @@ const projectData: readonly ProjectData[] = [
     heroImage: "/screenshots/warehouse-insights-dashboard.png",
     // TODO: add the remaining screenshots once they're taken
     gallery: ["/screenshots/warehouse-orders.png"],
+    imageZoom: 1.2,
     featured: false,
   },
 ];
@@ -123,15 +139,19 @@ export const projectSlugs: readonly ProjectSlug[] = projectData.map(
 );
 
 export function getProjects(locale: Locale): readonly Project[] {
-  return projectData.map(({ heroImage, gallery, ...data }) => {
+  return projectData.map(({ heroImage, gallery, imageZoom, ...data }) => {
     const { heroImageAlt, galleryAlts, ...copy } =
       copyByLocale[locale][data.slug];
 
     return {
       ...data,
       ...copy,
-      heroImage: { src: heroImage, alt: heroImageAlt },
-      gallery: gallery.map((src, i) => ({ src, alt: galleryAlts[i] ?? "" })),
+      heroImage: { src: heroImage, alt: heroImageAlt, zoom: imageZoom },
+      gallery: gallery.map((src, i) => ({
+        src,
+        alt: galleryAlts[i] ?? "",
+        zoom: imageZoom,
+      })),
     };
   });
 }

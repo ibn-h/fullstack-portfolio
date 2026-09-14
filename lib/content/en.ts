@@ -37,23 +37,18 @@ export const en = {
       secondary: { label: "See my work ↓", href: "#projects" },
     },
     badge: "Available",
-    process: {
-      label: "How I work",
-      summary: "Three applications shipped",
-      steps: [
-        {
-          title: "Plan",
-          description: "A written spec you approve before I write any code.",
-        },
-        {
-          title: "Build",
-          description:
-            "Working features you can test every week, not a surprise at the end.",
-        },
-        {
-          title: "Launch",
-          description: "Live on your domain, with documentation to hand over.",
-        },
+    profile: {
+      label: "About me at a glance",
+      summary: "Profile",
+      // Rendered as a two-column table, in this order.
+      rows: [
+        { label: "Name", value: site.name },
+        { label: "Role", value: "Full-stack developer" },
+        { label: "Age", value: "19" },
+        { label: "Experience", value: "2+ years, self-taught" },
+        { label: "Shipped", value: "3 applications" },
+        { label: "Languages", value: "Dutch, English" },
+        { label: "Response time", value: "Within 24 hours" },
       ],
       stackLabel: "Stack",
       stack: [

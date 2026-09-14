@@ -28,8 +28,7 @@ export const nl = {
 
   hero: {
     greeting: `Hallo, ik ben ${site.name},`,
-    tagline:
-      "Jouw idee, gebouwd en live, door één developer die plant voordat hij codeert.",
+    tagline: "Full-stack developer",
     subtitle:
       "Ik bouw webapps en SaaS-producten voor startups en kleine bedrijven. Elk project begint met een geschreven specificatie, zodat je precies weet wat je krijgt voordat ik één regel code schrijf.",
     cta: {
@@ -37,25 +36,17 @@ export const nl = {
       secondary: { label: "Bekijk mijn werk ↓", href: "#projects" },
     },
     badge: "Beschikbaar",
-    process: {
-      label: "Zo werk ik",
-      summary: "Drie applicaties opgeleverd",
-      steps: [
-        {
-          title: "Plannen",
-          description:
-            "Een geschreven specificatie die jij goedkeurt voordat ik code schrijf.",
-        },
-        {
-          title: "Bouwen",
-          description:
-            "Werkende features die je elke week kunt testen, geen verrassing aan het eind.",
-        },
-        {
-          title: "Lanceren",
-          description:
-            "Live op jouw domein, met documentatie om over te dragen.",
-        },
+    profile: {
+      label: "Over mij in het kort",
+      summary: "Profiel",
+      rows: [
+        { label: "Naam", value: site.name },
+        { label: "Rol", value: "Full-stack developer" },
+        { label: "Leeftijd", value: "19" },
+        { label: "Ervaring", value: "2+ jaar, zelfgeleerd" },
+        { label: "Opgeleverd", value: "3 applicaties" },
+        { label: "Talen", value: "Nederlands, Engels" },
+        { label: "Reactietijd", value: "Binnen 24 uur" },
       ],
       stackLabel: "Stack",
       stack: [

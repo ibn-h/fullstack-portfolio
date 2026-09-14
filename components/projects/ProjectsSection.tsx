@@ -2,11 +2,7 @@ import { FeaturedProject } from "./FeaturedProject";
 import { SmallProject } from "./SmallProject";
 import { Reveal } from "@/components/motion/reveal";
 import { content } from "@/lib/content";
-import {
-  featuredProject,
-  otherProjects,
-  type Project,
-} from "@/lib/projects";
+import { featuredProject, otherProjects, type Project } from "@/lib/projects";
 
 function toCardProps(project: Project) {
   return {
@@ -25,7 +21,10 @@ export default function ProjectsSection() {
   const { heading, subtitle } = content.projects;
 
   return (
-    <section id="projects" className="px-6 py-xl sm:px-xl sm:py-2xl">
+    <section
+      id="projects"
+      className="-scroll-mt-lg sm:-scroll-mt-[calc(var(--spacing-xl)+var(--spacing-lg))] px-6 py-xl sm:px-xl sm:py-2xl"
+    >
       <h2 className="text-text mb-(--spacing-lg)">{heading}</h2>
       {subtitle && (
         <p className="text-body text-muted max-w-[60ch] mb-(--spacing-lg)">

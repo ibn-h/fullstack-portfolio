@@ -72,6 +72,17 @@ export const content = {
       source: "View source on GitHub",
       caseStudy: "Case study",
     },
+    viewAll: { label: "View all projects", href: "/projects" },
+  },
+
+  projectsPage: {
+    heading: "Projects",
+    subtitle:
+      "Every project here started as a written spec. Each one has a case study covering the problem, the approach, the hardest part, and how it turned out.",
+    metaDescription:
+      "Full-stack web apps built with Next.js — each with a case study from problem to result.",
+    // Case study sections previewed on each row; `id` matches a key of the project's caseStudy.
+    excerpt: ["problem", "result"],
   },
 
   contact: {
@@ -117,7 +128,7 @@ export const content = {
   },
 
   projectDetail: {
-    backLink: { label: "Projects", href: "/#projects" },
+    backLink: { label: "Projects", href: "/projects" },
     sidebar: {
       role: "Role",
       // Only shown for projects with a non-empty timeline.

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { IconArrowRight } from "@tabler/icons-react";
 import { FeaturedProject } from "./FeaturedProject";
 import { SmallProject } from "./SmallProject";
 import { Reveal } from "@/components/motion/reveal";
@@ -18,7 +20,7 @@ function toCardProps(project: Project) {
 }
 
 export default function ProjectsSection() {
-  const { heading, subtitle } = content.projects;
+  const { heading, subtitle, viewAll } = content.projects;
 
   return (
     <section
@@ -46,6 +48,13 @@ export default function ProjectsSection() {
             </Reveal>
           ))}
         </div>
+        <Link
+          href={viewAll.href}
+          className="text-muted hover:text-text inline-flex items-center gap-xs self-end text-small transition-colors"
+        >
+          {viewAll.label}
+          <IconArrowRight className="size-4" aria-hidden="true" />
+        </Link>
       </div>
     </section>
   );

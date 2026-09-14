@@ -1,4 +1,4 @@
-con# Portfolio Checklist
+# Portfolio Checklist
 
 ## Milestone 1 — Content & case studies
 
@@ -56,18 +56,20 @@ con# Portfolio Checklist
 - [x] Generate `sitemap.xml`
 - [x] Create `robots.txt`
 - [x] Alt text on all images
-- [ ] Check Lighthouse score (aim for 90+)
+- [x] Check Lighthouse score (aim for 90+)
 
 ## Milestone 4 — Pre-launch
 
-- [ ] Review website content and confirm it meets requirements (Professional, authentic, convincing)
+- [x] Review website content and confirm it meets requirements (Professional, authentic, convincing)
 - [ ] Tested responsive on mobile, tablet, desktop
-- [ ] All links tested
-- [ ] Contact form tested
-- [ ] Language toggle tested
+- [x] All links tested
+- [x] Contact form tested
+- [x] Language toggle tested
 - [ ] No console errors
 - [x] Set favicon
 - [ ] Determine custom domain
+- [ ] Review code for security issues
+- [ ] Write README.md
 
 ## Milestone 5 — Launch (deadline 20 September)
 

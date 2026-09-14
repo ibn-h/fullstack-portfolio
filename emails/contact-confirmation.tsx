@@ -35,7 +35,7 @@ export default function ContactConfirmation({
         ))}
 
         <a
-          href="https://jouwdomein.com"
+          href="http://localhost:3000/projects"
           className="inline-block px-4.5 py-2.5 bg-primary text-bg text-sm font-medium no-underline rounded-lg"
         >
           {copy.cta}

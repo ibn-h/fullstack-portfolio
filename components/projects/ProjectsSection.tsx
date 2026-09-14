@@ -46,7 +46,7 @@ export default async function ProjectsSection() {
             <FeaturedProject {...toCardProps(featuredProject, locale)} />
           </Reveal>
         )}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {otherProjects.map((project, i) => (
             // `grid` keeps the card stretched to the full row height, exactly
             // as it was before this wrapper existed.

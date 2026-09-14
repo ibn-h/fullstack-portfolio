@@ -2,8 +2,7 @@
 // Translated copy (role, description) lives in lib/content/.
 // This is the lowest-level content file — don't import lib/content or projects.ts here.
 
-// TODO: replace with your real address.
-const email = "hello@example.com";
+const email = "badr.belarbi01@gmail.com";
 
 export const site = {
   name: "Badr",
@@ -51,5 +50,5 @@ export type SocialIconName = (typeof site.socials)[number]["icon"];
 
 /** Socials that have a URL filled in — the ones the UI renders. */
 export const visibleSocials = site.socials.filter(
-  (social) => social.href !== "",
+  (social) => social.href.length > 0,
 );

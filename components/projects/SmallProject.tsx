@@ -35,13 +35,13 @@ export function SmallProject({
               src={image.src}
               alt={image.alt}
               fill
-              sizes="50vw"
+              sizes="(min-width: 640px) 50vw, 100vw"
               className="object-cover"
               style={screenshotStyle(image)}
             />
           </div>
         </ProjectImageTransition>
-        <div className="p-5 flex flex-col gap-3">
+        <div className="min-w-0 wrap-break-word p-5 flex flex-col gap-3">
           <h3 className="text-h4 text-text m-0">{title}</h3>
           <p className="text-muted text-sm leading-relaxed m-0">
             {description}

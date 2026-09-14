@@ -31,21 +31,21 @@ export async function FeaturedProject({
 
   return (
     <Card className="bg-surface border-border overflow-hidden py-0">
-      <CardContent className="p-0 grid grid-cols-2">
+      <CardContent className="p-0 grid grid-cols-1 md:grid-cols-2">
         <ProjectImageTransition slug={slug}>
-          <div className="relative h-70 overflow-hidden">
+          <div className="relative aspect-video overflow-hidden md:aspect-auto md:min-h-70">
             <Image
               src={image.src}
               alt={image.alt}
               fill
-              sizes="50vw"
+              sizes="(min-width: 768px) 50vw, 100vw"
               priority
               className="object-cover"
               style={screenshotStyle(image)}
             />
           </div>
         </ProjectImageTransition>
-        <div className="p-8 flex flex-col justify-center gap-4">
+        <div className="min-w-0 wrap-break-word p-6 md:p-8 flex flex-col justify-center gap-4">
           <small className="text-muted">{featuredLabel}</small>
           <h3 className="text-text m-0">{title}</h3>
           <p className="text-muted text-sm leading-relaxed m-0">

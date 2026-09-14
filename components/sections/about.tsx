@@ -6,12 +6,12 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { content } from "@/lib/content";
+import { getContent } from "@/lib/i18n/server";
 
-const { about } = content;
-const [lead, ...paragraphs] = about.paragraphs;
+export default async function About() {
+  const { about } = await getContent();
+  const [lead, ...paragraphs] = about.paragraphs;
 
-export default function About() {
   return (
     <section id="about" className="px-6 py-xl sm:px-xl sm:py-2xl">
       <Card className="rounded-lg border border-border bg-surface ring-0 [--card-spacing:var(--spacing-lg)]">

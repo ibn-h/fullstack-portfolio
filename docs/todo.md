@@ -2,7 +2,6 @@
 
 ## In Progress
 
-
 - [ ] Review website content and confirm it meets requirements (Professional, authentic, convincing)
 
 ## Bugs

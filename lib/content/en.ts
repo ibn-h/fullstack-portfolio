@@ -1,12 +1,35 @@
-// All visible section copy, in the same order as the page layout.
+// All visible copy in English, in the same order as the page layout.
+// English is the source shape: nl.ts must match it key for key.
 
-import { site } from "./site";
+import { site } from "@/lib/site";
 
-export const content = {
+export const en = {
+  meta: {
+    role: "Full-stack developer",
+    // Default meta description — keep it under ~155 characters.
+    description: `${site.name} is a full-stack developer building web apps and SaaS products with Next.js for startups and small businesses, planned, built and launched.`,
+    home: "Home",
+  },
+
+  nav: {
+    projects: "Projects",
+    about: "About",
+    contact: "Contact",
+    mainLabel: "Main",
+    footerLabel: "Footer",
+  },
+
+  header: {
+    cta: "Let's talk",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    languageLabel: "Language",
+  },
+
   hero: {
-    greeting: `Hi, I'm ${site.name} —`,
+    greeting: `Hi, I'm ${site.name},`,
     tagline:
-      "Your idea, built and live — by one developer who plans before he codes.",
+      "Your idea, built and live, by one developer who plans before he codes.",
     subtitle:
       "I build web apps and SaaS products for startups and small businesses. Every project starts with a written spec, so you know exactly what you're getting before I write a line of code.",
     cta: {
@@ -48,7 +71,7 @@ export const content = {
     // The first paragraph is rendered as the larger lead-in.
     paragraphs: [
       `I'm ${site.name}, a self-taught full-stack developer with two years of experience building web applications.`,
-      "One of my recent projects is Y2Notion, a SaaS tool that summarizes YouTube videos and saves them directly to Notion. I like to work in a structured way — every project starts with documentation, and I only write code once I have a clear plan and defined feature specs.",
+      "One of my recent projects is Y2Notion, a SaaS tool that summarizes YouTube videos and saves them directly to Notion. I like to work in a structured way: every project starts with documentation, and I only write code once I have a clear plan and defined feature specs.",
       "Alongside development, I worked at an IT helpdesk, an experience that sharpened my problem-solving and communication skills.",
     ],
     stats: [
@@ -72,7 +95,7 @@ export const content = {
       source: "View source on GitHub",
       caseStudy: "Case study",
     },
-    viewAll: { label: "View all projects", href: "/projects" },
+    viewAll: "View all projects",
   },
 
   projectsPage: {
@@ -80,9 +103,7 @@ export const content = {
     subtitle:
       "Every project here started as a written spec. Each one has a case study covering the problem, the approach, the hardest part, and how it turned out.",
     metaDescription:
-      "Full-stack web apps built with Next.js — each with a case study from problem to result.",
-    // Case study sections previewed on each row; `id` matches a key of the project's caseStudy.
-    excerpt: ["problem", "result"],
+      "Full-stack web apps built with Next.js, each with a case study from problem to result.",
   },
 
   contact: {
@@ -106,11 +127,11 @@ export const content = {
         emailRequired: "Please enter your email address.",
         emailInvalid: "That doesn't look like a valid email address.",
         messageRequired: "Please tell me a bit about your project.",
-        sendFailed: "Something went wrong — please try again.",
+        sendFailed: "Something went wrong, please try again.",
       },
       success: {
         heading: "Message sent",
-        body: "Thanks for reaching out — I'll reply within 24 hours.",
+        body: "Thanks for reaching out, I'll reply within 24 hours.",
         reset: "Send another message",
       },
     },
@@ -118,7 +139,7 @@ export const content = {
 
   footer: {
     tagline:
-      "Full-stack developer building web apps that ship — from first sketch to production.",
+      "Full-stack developer building web apps that ship, from first sketch to production.",
     badge: "Available for new projects",
     navLabel: "Navigate",
     socialsLabel: "Elsewhere",
@@ -128,21 +149,39 @@ export const content = {
   },
 
   projectDetail: {
-    backLink: { label: "Projects", href: "/projects" },
+    backLink: "Projects",
     sidebar: {
       role: "Role",
-      // Only shown for projects with a non-empty timeline.
-      timeline: "Timeline",
       stack: "Stack",
       live: "Live site",
       source: "Source",
     },
-    // Rendered in this order; `id` matches a key of the project's caseStudy.
-    caseStudy: [
-      { id: "problem", title: "Problem" },
-      { id: "approach", title: "Approach" },
-      { id: "challenge", title: "Challenge" },
-      { id: "result", title: "Result" },
-    ],
+    // Keyed by case study section; the order lives in lib/projects.ts.
+    caseStudyTitles: {
+      problem: "Problem",
+      approach: "Approach",
+      challenge: "Challenge",
+      result: "Result",
+    },
+  },
+
+  notFound: {
+    heading: "Page not found",
+    body: "The page you're looking for doesn't exist or has moved.",
+    cta: "Back to home",
+  },
+
+  emails: {
+    confirmation: {
+      subject: "Thanks for reaching out",
+      heading: "Thanks for reaching out",
+      // `{name}` is replaced with the sender's name.
+      greeting: "Hi {name},",
+      paragraphs: [
+        "I've received your message and will get back to you within 24 hours.",
+        "In the meantime, feel free to check out my recent projects or connect with me on LinkedIn.",
+      ],
+      cta: "View my work",
+    },
   },
 } as const;

@@ -41,7 +41,7 @@ export function SmallProject({
           </div>
         </ProjectImageTransition>
         <div className="p-5 flex flex-col gap-3">
-          <h4 className="text-text m-0">{title}</h4>
+          <h3 className="text-h4 text-text m-0">{title}</h3>
           <p className="text-muted text-sm leading-relaxed m-0">
             {description}
           </p>

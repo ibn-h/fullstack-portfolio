@@ -7,7 +7,7 @@ interface CaseStudySectionProps {
 export function CaseStudySection({ title, content }: CaseStudySectionProps) {
   return (
     <section className="mb-lg">
-      <h3 className="text-text">{title}</h3>
+      <h2 className="text-h3 text-text">{title}</h2>
       <div className="mt-sm flex flex-col gap-sm">
         {content.map((paragraph) => (
           <p key={paragraph} className="text-muted leading-relaxed">

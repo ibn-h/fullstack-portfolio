@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { content } from "@/lib/content";
+import type { Content } from "@/lib/content";
+import type { Locale } from "@/lib/i18n/config";
 import { visibleSocials } from "@/lib/site";
 
-const { contact } = content;
-const { fields, errors: errorCopy, success } = contact.form;
+type ContactCopy = Content["contact"];
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -24,7 +24,10 @@ const EMPTY: Values = { name: "", email: "", message: "" };
 const fieldClassName =
   "h-auto border-border bg-bg px-md py-sm text-body placeholder:text-muted focus-visible:border-primary focus-visible:ring-primary/20";
 
-function validate(values: Values): Errors {
+function validate(
+  values: Values,
+  errorCopy: ContactCopy["form"]["errors"],
+): Errors {
   const errors: Errors = {};
 
   if (!values.name.trim()) {
@@ -44,7 +47,15 @@ function validate(values: Values): Errors {
   return errors;
 }
 
-export default function Contact() {
+interface ContactProps {
+  copy: ContactCopy;
+  /** Sent along with the form, so the confirmation email is in the same language. */
+  locale: Locale;
+}
+
+export default function Contact({ copy: contact, locale }: ContactProps) {
+  const { fields, errors: errorCopy, success } = contact.form;
+
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
@@ -55,7 +66,7 @@ export default function Contact() {
   }
 
   async function handleSubmit() {
-    const nextErrors = validate(values);
+    const nextErrors = validate(values, errorCopy);
     setErrors(nextErrors);
 
     if (Object.keys(nextErrors).length > 0) return;
@@ -66,7 +77,7 @@ export default function Contact() {
       const response = await fetch("/api/resend", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, locale }),
       });
 
       if (!response.ok) throw new Error("Request failed");

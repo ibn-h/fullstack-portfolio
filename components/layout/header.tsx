@@ -4,18 +4,29 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Button } from "@/components/ui/button";
+import type { Content } from "@/lib/content";
+import { localizePath, type Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { label: "Projects", href: "/#projects" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
-];
+interface HeaderProps {
+  locale: Locale;
+  nav: Content["nav"];
+  copy: Content["header"];
+}
 
-export function Header() {
+export function Header({ locale, nav, copy }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const home = localizePath(locale, "/");
+  const contactHref = `${home}#contact`;
+  const navItems = [
+    { label: nav.projects, href: `${home}#projects` },
+    { label: nav.about, href: `${home}#about` },
+    { label: nav.contact, href: contactHref },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -35,7 +46,7 @@ export function Header() {
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-md sm:px-xl">
         <Link
-          href="/"
+          href={home}
           onClick={() => setOpen(false)}
           className="flex items-center gap-sm text-body font-semibold text-text"
         >
@@ -46,7 +57,10 @@ export function Header() {
           Badr
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-lg sm:flex">
+        <nav
+          aria-label={nav.mainLabel}
+          className="hidden items-center gap-lg sm:flex"
+        >
           {navItems.map(({ label, href }) => (
             <Link
               key={href}
@@ -58,18 +72,17 @@ export function Header() {
           ))}
         </nav>
 
-        <Button
-          nativeButton={false}
-          className="hidden sm:inline-flex"
-          render={<Link href="/#contact" />}
-        >
-          Let&apos;s talk
-        </Button>
+        <div className="hidden items-center gap-lg sm:flex">
+          <LanguageSwitcher locale={locale} label={copy.languageLabel} />
+          <Button nativeButton={false} render={<Link href={contactHref} />}>
+            {copy.cta}
+          </Button>
+        </div>
 
         <Button
           variant="ghost"
           size="icon"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? copy.closeMenu : copy.openMenu}
           aria-expanded={open}
           aria-controls="mobile-nav"
           className="text-muted hover:bg-surface hover:text-text sm:hidden"
@@ -86,7 +99,7 @@ export function Header() {
       {open ? (
         <nav
           id="mobile-nav"
-          aria-label="Main"
+          aria-label={nav.mainLabel}
           className="flex flex-col gap-md border-t border-border bg-bg px-6 py-md sm:hidden"
         >
           {navItems.map(({ label, href }) => (
@@ -99,12 +112,18 @@ export function Header() {
               {label}
             </Link>
           ))}
+          <LanguageSwitcher
+            locale={locale}
+            label={copy.languageLabel}
+            className="text-body"
+            onNavigate={() => setOpen(false)}
+          />
           <Button
             nativeButton={false}
             className="w-full"
-            render={<Link href="/#contact" onClick={() => setOpen(false)} />}
+            render={<Link href={contactHref} onClick={() => setOpen(false)} />}
           >
-            Let&apos;s talk
+            {copy.cta}
           </Button>
         </nav>
       ) : null}

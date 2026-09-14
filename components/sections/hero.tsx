@@ -3,11 +3,11 @@ import Link from "next/link";
 import { ProjectBadge } from "@/components/projects/ProjectBadge";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
-import { content } from "@/lib/content";
+import { getContent } from "@/lib/i18n/server";
 
-const { hero } = content;
+export default async function Hero() {
+  const { hero } = await getContent();
 
-export default function Hero() {
   return (
     <section id="hero" className="px-6 py-xl sm:px-xl sm:py-2xl">
       <div className="grid items-center gap-xl lg:grid-cols-[1.1fr_1fr]">

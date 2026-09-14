@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { content } from "@/lib/content";
+import { getContent } from "@/lib/i18n/server";
 import {
   IconArrowRight,
   IconBrandGithub,
   IconExternalLink,
 } from "@tabler/icons-react";
-
-const { links } = content.projects;
 
 interface ProjectLinksProps {
   liveUrl: string;
@@ -16,12 +14,14 @@ interface ProjectLinksProps {
   featured?: boolean;
 }
 
-export function ProjectLinks({
+export async function ProjectLinks({
   liveUrl,
   githubUrl,
   caseStudyUrl,
   featured = false,
 }: ProjectLinksProps) {
+  const { links } = (await getContent()).projects;
+
   return (
     <div className="flex items-center gap-2">
       <Button

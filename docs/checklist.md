@@ -51,11 +51,11 @@
 
 ## Milestone 3 — SEO
 
-- [ ] Meta title and description per page
-- [ ] Open Graph tags (for social media previews)
-- [ ] Generate `sitemap.xml`
-- [ ] Create `robots.txt`
-- [ ] Alt text on all images
+- [x] Meta title and description per page
+- [x] Open Graph tags (for social media previews)
+- [x] Generate `sitemap.xml`
+- [x] Create `robots.txt`
+- [x] Alt text on all images
 - [ ] Check Lighthouse score (aim for 90+)
 
 ## Milestone 4 — Pre-launch
@@ -66,7 +66,7 @@
 - [ ] Contact form tested
 - [ ] Language toggle tested
 - [ ] No console errors
-- [ ] Set favicon
+- [x] Set favicon
 - [ ] Determine custom domain
 
 ## Milestone 5 — Launch (deadline 20 September)

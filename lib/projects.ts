@@ -1,3 +1,7 @@
+import { projectsEn } from "./content/projects-en";
+import { projectsNl } from "./content/projects-nl";
+import type { Locale } from "./i18n/config";
+
 export interface Screenshot {
   src: string;
   alt: string;
@@ -11,13 +15,28 @@ export interface CaseStudy {
   result: readonly string[];
 }
 
+export type CaseStudyId = keyof CaseStudy;
+
+/** Case study sections, in the order they're rendered on the detail page. */
+export const caseStudyOrder = [
+  "problem",
+  "approach",
+  "challenge",
+  "result",
+] as const satisfies readonly CaseStudyId[];
+
+/** Case study sections previewed on each row of the projects page. */
+export const caseStudyExcerpt = [
+  "problem",
+  "result",
+] as const satisfies readonly CaseStudyId[];
+
 export interface Project {
   slug: string;
   title: string;
   tagline: string;
   description: string;
   role: string;
-  timeline: string;
   stack: readonly string[];
   liveUrl: string;
   githubUrl: string;
@@ -27,150 +46,96 @@ export interface Project {
   caseStudy: CaseStudy;
 }
 
-export const projects = [
+export type ProjectSlug = "y2notion" | "hairsalon-booking" | "warehouse-insights";
+
+/** The translated half of a project. One per locale, in lib/content/projects-*.ts. */
+export interface ProjectCopy {
+  title: string;
+  tagline: string;
+  description: string;
+  role: string;
+  heroImageAlt: string;
+  /** Same order as the project's `gallery`. */
+  galleryAlts: readonly string[];
+  caseStudy: CaseStudy;
+}
+
+export type ProjectsCopy = Record<ProjectSlug, ProjectCopy>;
+
+/** The language-independent half of a project. */
+interface ProjectData {
+  slug: ProjectSlug;
+  stack: readonly string[];
+  liveUrl: string;
+  githubUrl: string;
+  heroImage: string;
+  gallery: readonly string[];
+  featured: boolean;
+}
+
+const projectData: readonly ProjectData[] = [
   {
     slug: "y2notion",
-    title: "Y2Notion",
-    tagline:
-      "Converts YouTube videos into structured Markdown summaries using AI, with one-click save to Notion.",
-    description:
-      "Y2Notion is a Next.js SaaS tool that converts YouTube videos into structured Markdown summaries using AI. It connects directly to your Notion workspace, allowing you to save summaries with one click. Built with Groq API for fast AI summarization and the Notion API for seamless integration.",
-    role: "Solo developer",
-    // TODO: add the project timeline, e.g. "3 weeks".
-    timeline: "",
     stack: ["Next.js", "Groq API", "Notion API", "TypeScript", "Supadata"],
     liveUrl: "https://y2notion.com",
     // TODO: replace with the real repository URL.
     githubUrl: "https://github.com/jouwusername/y2notion",
-    heroImage: {
-      src: "/screenshots/y2notion-homepage.png",
-      alt: "Y2Notion homepage with a YouTube link pasted into the input next to the Summarize button",
-    },
+    heroImage: "/screenshots/y2notion-homepage.png",
     gallery: [
-      {
-        src: "/screenshots/y2notion-homepage-summary.png",
-        alt: "Notion location picker opened above a summary, with the YouTube Summaries page selected",
-      },
-      {
-        src: "/screenshots/y2notion-summary.png",
-        alt: "Generated Markdown summary of a JavaScript video with Copy and Save to Notion actions",
-      },
+      "/screenshots/y2notion-homepage-summary.png",
+      "/screenshots/y2notion-summary.png",
     ],
     featured: true,
-    caseStudy: {
-      problem: [
-        "I use YouTube a lot and sometimes come across useful information I want to save for later. My usual workflow was copying the transcript, pasting it into AI for a summary, and then saving it to Notion — but after doing this many times, I decided to build a tool that automates all three steps.",
-      ],
-      approach: [
-        "I started with a documentation-first approach, writing out the core features and a step-by-step implementation plan before touching any code. The two features I identified were the YouTube-to-Markdown converter and the save-to-Notion integration.",
-        "For the stack, I went with Next.js because it combines frontend and backend in one framework, and Groq for AI summarization because it doesn't require a paid subscription.",
-        "To stay focused during each session, I tracked tasks in a simple TODO.md file — picking 2-4 tasks per session and moving them to Done when finished.",
-      ],
-      challenge: [
-        "For retrieving transcripts, I originally used youtube-transcript-plus, but after deploying to production I started getting errors — YouTube only allows requests from browsers, not servers. I switched to Supadata, which handled server-side requests without any issues.",
-      ],
-      result: [
-        "By pasting a URL, Y2Notion generates a concise Markdown summary with the option to save it directly to Notion. It does exactly what I envisioned — and I use it myself every time I need a video summarized.",
-      ],
-    },
   },
   {
     slug: "hairsalon-booking",
-    title: "Hairsalon booking",
-    tagline:
-      "Reservation system with email confirmations and a protected barber dashboard.",
-    description:
-      "A full-stack reservation system built for a conceptual barbershop called The Blade. Customers can book appointments on their preferred timeslot and receive an email confirmation, while the barber manages all reservations from a protected dashboard. Built with Next.js, Supabase, and Resend.",
-    role: "Solo developer",
-    // TODO: add the project timeline, e.g. "3 weeks".
-    timeline: "",
     stack: ["Next.js", "Supabase", "Resend"],
     liveUrl: "https://theblade.com",
     // TODO: replace with the real repository URL.
     githubUrl: "https://github.com/jouwusername/hairsalon",
-    heroImage: {
-      src: "/screenshots/hairsalon-homepage.png",
-      alt: "The Blade barbershop homepage with a Book your appointment button",
-    },
+    heroImage: "/screenshots/hairsalon-homepage.png",
     gallery: [
-      {
-        src: "/screenshots/hairsalon-form.png",
-        alt: "Reservation form with name, phone, email, service, date and timeslot fields",
-      },
-      {
-        src: "/screenshots/hairsalon-dashboard.png",
-        alt: "Barber dashboard listing reservations by date and timeslot, with status and date filters",
-      },
+      "/screenshots/hairsalon-form.png",
+      "/screenshots/hairsalon-dashboard.png",
     ],
     featured: false,
-    caseStudy: {
-      problem: [
-        "Many barbers handle appointments manually through WhatsApp or phone calls. This works for a small number of clients, but becomes difficult to manage as bookings grow. It's also inconvenient for the customer, who has to call during opening hours and wait for a confirmation. A reservation system solves both problems.",
-      ],
-      approach: [
-        "Just like my previous project, I took a documentation-first approach, writing a project description and determining the MVP before touching any code. This time I also introduced feature spec files — documents that describe each feature with a user story and acceptance criteria. This made it easy to know exactly when a feature was finished without adding unnecessary extras.",
-        "For the stack I used Supabase as my Postgres database, storing reservations and a rate limits table to prevent spam. For email notifications I used Resend, which allowed me to send templated emails to both the customer and barber whenever a booking was made.",
-      ],
-      challenge: [
-        "I spent a lot of time debugging an issue with Row-Level Security (RLS) in Supabase. After enabling it, my queries stopped working — but instead of throwing an error, they just returned an empty array. The lesson: always plan your RLS policies before building the database layer.",
-      ],
-      result: [
-        "The end result is a fully working reservation system with an intuitive protected dashboard. Customers can book their preferred timeslot, and the barber receives a notification with the details. From the dashboard, the barber can view all reservations, filter by status or date, and cancel bookings when necessary.",
-      ],
-    },
   },
   {
     slug: "warehouse-insights",
-    title: "Warehouse Insights",
-    tagline:
-      "Real-time KPI dashboard with live order tracking and instant notifications.",
-    description:
-      "A real-time dashboard that gives warehouse managers a centralized view of their orders, inventory, and KPIs. Built with Pusher for live data updates and Auth.js for secure authentication, it replaces disconnected systems with one intuitive interface. Managers can monitor stock levels, track orders, and receive instant notifications when something changes.",
-    role: "Solo developer",
-    // TODO: add the project timeline, e.g. "3 weeks".
-    timeline: "",
     stack: ["Next.js", "Pusher", "Auth.js"],
     liveUrl: "https://warehouse-insights.com",
     // TODO: replace with the real repository URL.
     githubUrl: "https://github.com/jouwusername/warehouse-insights",
-    heroImage: {
-      src: "/screenshots/warehouse-insights-dashboard.png",
-      alt: "Warehouse Insights dashboard with KPI cards for today's orders, open and completed orders, inventory and low stock",
-    },
+    heroImage: "/screenshots/warehouse-insights-dashboard.png",
     // TODO: add the remaining screenshots once they're taken
-    gallery: [
-      {
-        src: "/screenshots/warehouse-orders.png",
-        alt: "Orders overview with search, a status filter and an editable status per order",
-      },
-    ],
+    gallery: ["/screenshots/warehouse-orders.png"],
     featured: false,
-    caseStudy: {
-      problem: [
-        "Most warehouses work with multiple disconnected systems for managing orders and inventory. This spreads data across different locations, making it difficult to get a clear overview or perform actions like updating stock when an order is placed. Warehouse Insights solves this by bringing everything into one real-time dashboard.",
-      ],
-      approach: [
-        "For the MVP I identified seven core features: a KPI dashboard, orders and inventory overview pages, a product detail page, authentication, real-time data, and notifications. Each feature had its own spec file with a user story and acceptance criteria, so I always knew exactly what I was building and when it was done.",
-        "For real-time functionality I used Pusher, and for authentication I used Auth.js with Google as the provider. I also kept a backlog.md file as a checklist to track progress across all features.",
-      ],
-      challenge: [
-        "Pusher's documentation doesn't cover Next.js specifically, which made the implementation difficult to figure out. After working through it I got a solid understanding of how to integrate real-time functionality into a Next.js application. I also noticed a tendency to refactor code mid-session — while not inherently bad, it pulled focus away from the MVP and wasted time better spent on core features.",
-      ],
-      result: [
-        "Warehouse Insights ended up better than expected — a real-time dashboard that gives warehouse managers a clear, centralized view of their operations. The application is cleanly structured under a /dashboard route with an intuitive sidebar for navigating between overviews, making it easy to monitor stock, track orders, and act on live notifications.",
-      ],
-    },
   },
-] as const satisfies readonly Project[];
+];
 
-export const featuredProject: Project | undefined = projects.find(
-  (project) => project.featured,
+const copyByLocale: Record<Locale, ProjectsCopy> = {
+  en: projectsEn,
+  nl: projectsNl,
+};
+
+export const projectSlugs: readonly ProjectSlug[] = projectData.map(
+  ({ slug }) => slug,
 );
 
-export const otherProjects: readonly Project[] = projects.filter(
-  (project) => !project.featured,
-);
+export function getProjects(locale: Locale): readonly Project[] {
+  return projectData.map(({ heroImage, gallery, ...data }) => {
+    const { heroImageAlt, galleryAlts, ...copy } =
+      copyByLocale[locale][data.slug];
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((project) => project.slug === slug);
+    return {
+      ...data,
+      ...copy,
+      heroImage: { src: heroImage, alt: heroImageAlt },
+      gallery: gallery.map((src, i) => ({ src, alt: galleryAlts[i] ?? "" })),
+    };
+  });
+}
+
+export function getProject(locale: Locale, slug: string): Project | undefined {
+  return getProjects(locale).find((project) => project.slug === slug);
 }

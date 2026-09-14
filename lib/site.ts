@@ -1,12 +1,12 @@
-// Global site data shared across every page.
-// This is the lowest-level content file — don't import content.ts or projects.ts here.
+// Global site data shared across every page and every language.
+// Translated copy (role, description) lives in lib/content/.
+// This is the lowest-level content file — don't import lib/content or projects.ts here.
 
 // TODO: replace with your real address.
 const email = "hello@example.com";
 
 export const site = {
   name: "Badr",
-  role: "Full-stack developer",
   // TODO: add your domain, e.g. "badr.dev".
   domain: "",
   // TODO: add your full URL, e.g. "https://badr.dev".
@@ -39,6 +39,16 @@ export const site = {
     },
   ],
 } as const;
+
+/**
+ * Absolute base URL for metadata, the sitemap and structured data.
+ * Falls back to the Vercel production URL, then localhost, until `site.url` is set.
+ */
+export const siteUrl =
+  site.url ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 
 export type SocialIconName = (typeof site.socials)[number]["icon"];
 

@@ -2,14 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
-import { content } from "@/lib/content";
-import type { Project } from "@/lib/projects";
+import { contentByLocale } from "@/lib/content";
+import { localizePath } from "@/lib/i18n/config";
+import { getLocale } from "@/lib/i18n/server";
+import { caseStudyExcerpt, type Project } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
-
-const { excerpt } = content.projectsPage;
-const sectionTitles = content.projectDetail.caseStudy;
 
 interface ProjectRowProps {
   project: Project;
@@ -17,8 +16,10 @@ interface ProjectRowProps {
   index: number;
 }
 
-export function ProjectRow({ project, index }: ProjectRowProps) {
-  const caseStudyUrl = `/projects/${project.slug}`;
+export async function ProjectRow({ project, index }: ProjectRowProps) {
+  const locale = await getLocale();
+  const { caseStudyTitles } = contentByLocale[locale].projectDetail;
+  const caseStudyUrl = localizePath(locale, `/projects/${project.slug}`);
   const reversed = index % 2 === 1;
 
   return (
@@ -58,10 +59,10 @@ export function ProjectRow({ project, index }: ProjectRowProps) {
           </div>
 
           <dl className="border-border flex flex-col gap-3 border-t pt-4">
-            {excerpt.map((id) => (
+            {caseStudyExcerpt.map((id) => (
               <div key={id} className="flex flex-col gap-1">
                 <dt className="text-muted text-xs uppercase tracking-wider">
-                  {sectionTitles.find((section) => section.id === id)?.title}
+                  {caseStudyTitles[id]}
                 </dt>
                 <dd className="text-text text-sm leading-relaxed line-clamp-3 m-0">
                   {project.caseStudy[id][0]}

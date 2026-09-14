@@ -1,18 +1,21 @@
 import Link from "next/link";
 import { IconArrowLeft } from "@tabler/icons-react";
 
-import { content } from "@/lib/content";
+import { contentByLocale } from "@/lib/content";
+import { localizePath } from "@/lib/i18n/config";
+import { getLocale } from "@/lib/i18n/server";
 
-const { backLink } = content.projectDetail;
+export async function BackLink() {
+  const locale = await getLocale();
+  const { backLink } = contentByLocale[locale].projectDetail;
 
-export function BackLink() {
   return (
     <Link
-      href={backLink.href}
+      href={localizePath(locale, "/projects")}
       className="text-muted hover:text-text inline-flex items-center gap-xs text-small transition-colors"
     >
       <IconArrowLeft className="size-4" aria-hidden="true" />
-      {backLink.label}
+      {backLink}
     </Link>
   );
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ProjectImageTransition } from "@/components/motion/project-image-transition";
 import { Card, CardContent } from "@/components/ui/card";
-import { content } from "@/lib/content";
+import { getContent } from "@/lib/i18n/server";
 import type { Screenshot } from "@/lib/projects";
 import { ProjectBadge } from "./ProjectBadge";
 import { ProjectLinks } from "./ProjectLinks";
@@ -17,7 +17,7 @@ interface FeaturedProjectProps {
   caseStudyUrl: string;
 }
 
-export function FeaturedProject({
+export async function FeaturedProject({
   slug,
   title,
   description,
@@ -27,6 +27,8 @@ export function FeaturedProject({
   githubUrl,
   caseStudyUrl,
 }: FeaturedProjectProps) {
+  const { featuredLabel } = (await getContent()).projects;
+
   return (
     <Card className="bg-surface border-border overflow-hidden py-0">
       <CardContent className="p-0 grid grid-cols-2">
@@ -43,9 +45,7 @@ export function FeaturedProject({
           </div>
         </ProjectImageTransition>
         <div className="p-8 flex flex-col justify-center gap-4">
-          <small className="text-muted">
-            {content.projects.featuredLabel}
-          </small>
+          <small className="text-muted">{featuredLabel}</small>
           <h3 className="text-text m-0">{title}</h3>
           <p className="text-muted text-sm leading-relaxed m-0">
             {description}

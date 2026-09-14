@@ -1,10 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { content } from "@/lib/content";
+import { getContent } from "@/lib/i18n/server";
 import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
-
-const labels = content.projectDetail.sidebar;
 
 interface ProjectSidebarProps {
   role: string;
@@ -20,13 +18,15 @@ function MetaLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function ProjectSidebar({
+export async function ProjectSidebar({
   role,
   timeline,
   stack,
   liveUrl,
   githubUrl,
 }: ProjectSidebarProps) {
+  const labels = (await getContent()).projectDetail.sidebar;
+
   return (
     <Card className="bg-surface border-border">
       <CardContent className="flex flex-col gap-md">

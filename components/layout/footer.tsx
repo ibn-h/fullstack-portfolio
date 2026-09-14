@@ -2,25 +2,29 @@ import Link from "next/link";
 import { IconArrowUp } from "@tabler/icons-react";
 
 import { socialIcons } from "@/components/icons/social-icons";
-import { content } from "@/lib/content";
+import { contentByLocale } from "@/lib/content";
+import { localizePath } from "@/lib/i18n/config";
+import { getLocale } from "@/lib/i18n/server";
 import { site, visibleSocials } from "@/lib/site";
 
-const { footer } = content;
+export async function Footer() {
+  const locale = await getLocale();
+  const { footer, nav } = contentByLocale[locale];
 
-const navItems = [
-  { label: "Projects", href: "/#projects" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
-];
+  const home = localizePath(locale, "/");
+  const navItems = [
+    { label: nav.projects, href: `${home}#projects` },
+    { label: nav.about, href: `${home}#about` },
+    { label: nav.contact, href: `${home}#contact` },
+  ];
 
-export function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-surface">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-lg px-6 py-xl sm:px-xl">
         <div className="flex flex-col gap-lg sm:flex-row sm:justify-between">
           <div className="flex max-w-[36ch] flex-col gap-sm">
             <Link
-              href="/"
+              href={home}
               className="flex items-center gap-sm text-body font-semibold text-text"
             >
               <span
@@ -40,7 +44,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-lg sm:flex-row sm:gap-xl">
-            <nav aria-label="Footer" className="flex flex-col gap-sm">
+            <nav aria-label={nav.footerLabel} className="flex flex-col gap-sm">
               <p className="text-small font-semibold text-text">
                 {footer.navLabel}
               </p>

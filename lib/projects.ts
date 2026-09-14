@@ -59,7 +59,8 @@ export interface Project {
   caseStudy: CaseStudy;
 }
 
-export type ProjectSlug = "y2notion" | "hairsalon-booking" | "warehouse-insights";
+export type ProjectSlug =
+  "y2notion" | "hairsalon-booking" | "warehouse-insights";
 
 /** The translated half of a project. One per locale, in lib/content/projects-*.ts. */
 export interface ProjectCopy {
@@ -93,8 +94,7 @@ const projectData: readonly ProjectData[] = [
     slug: "y2notion",
     stack: ["Next.js", "Groq API", "Notion API", "TypeScript", "Supadata"],
     liveUrl: "https://y2notion.com",
-    // TODO: replace with the real repository URL.
-    githubUrl: "https://github.com/jouwusername/y2notion",
+    githubUrl: "https://github.com/ibn-h/y2notion",
     heroImage: "/screenshots/y2notion-homepage.png",
     gallery: [
       "/screenshots/y2notion-homepage-summary.png",
@@ -106,8 +106,7 @@ const projectData: readonly ProjectData[] = [
     slug: "hairsalon-booking",
     stack: ["Next.js", "Supabase", "Resend"],
     liveUrl: "https://theblade.com",
-    // TODO: replace with the real repository URL.
-    githubUrl: "https://github.com/jouwusername/hairsalon",
+    githubUrl: "https://github.com/ibn-h/hairsalon-booking-system",
     heroImage: "/screenshots/hairsalon-homepage.png",
     gallery: [
       "/screenshots/hairsalon-form.png",
@@ -119,8 +118,7 @@ const projectData: readonly ProjectData[] = [
     slug: "warehouse-insights",
     stack: ["Next.js", "Pusher", "Auth.js"],
     liveUrl: "https://warehouse-insights.com",
-    // TODO: replace with the real repository URL.
-    githubUrl: "https://github.com/jouwusername/warehouse-insights",
+    githubUrl: "https://github.com/ibn-h/warehouse-insights",
     heroImage: "/screenshots/warehouse-insights-dashboard.png",
     // TODO: add the remaining screenshots once they're taken
     gallery: ["/screenshots/warehouse-orders.png"],

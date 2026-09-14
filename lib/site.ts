@@ -16,20 +16,17 @@ export const site = {
   socials: [
     {
       label: "LinkedIn",
-      // TODO: replace with your LinkedIn profile URL.
-      href: "https://www.linkedin.com/in/jouwusername",
+      href: "https://www.linkedin.com/in/badr-b-40b1b6351/",
       icon: "ti-brand-linkedin",
     },
     {
       label: "GitHub",
-      // TODO: replace with your GitHub profile URL.
-      href: "https://github.com/jouwusername",
+      href: "https://github.com/ibn-h",
       icon: "ti-brand-github",
     },
     {
       label: "X",
-      // TODO: add your X profile URL. Entries with an empty href aren't rendered.
-      href: "",
+      href: "https://x.com/IbnH360123",
       icon: "ti-brand-x",
     },
     {

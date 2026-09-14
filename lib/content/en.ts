@@ -87,8 +87,7 @@ export const en = {
 
   projects: {
     heading: "Projects",
-    // TODO: add a subtitle. It isn't rendered while empty.
-    subtitle: "",
+    subtitle: "Three applications, from first problem to deployed product.",
     featuredLabel: "Featured project",
     links: {
       live: "Live",

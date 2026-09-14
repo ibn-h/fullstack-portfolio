@@ -2,8 +2,8 @@
 
 ## In Progress
 
-- [ ] Review website content and confirm it meets requirements (Professional, authentic, convincing)
-- [ ] Add correct links
+- [x] Review website content and confirm it meets requirements (Professional, authentic, convincing)
+- [x] Add correct links
 
 ## Bugs
 

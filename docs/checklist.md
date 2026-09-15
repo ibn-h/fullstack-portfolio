@@ -67,9 +67,9 @@
 - [x] Language toggle tested
 - [ ] No console errors
 - [x] Set favicon
+- [ ] Review code for security, performance & code structure
 - [ ] Determine custom domain
-- [ ] Review code for security issues
-- [ ] Write README.md
+- [x] Write README.md
 
 ## Milestone 5 — Launch (deadline 20 September)
 

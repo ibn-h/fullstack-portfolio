@@ -2,9 +2,6 @@
 
 ## In Progress
 
-- [x] Review website content and confirm it meets requirements (Professional, authentic, convincing)
-- [x] Add correct links
-
 ## Bugs
 
 ## Done
@@ -17,3 +14,5 @@
 - [x] Design projects page
 - [x] Fix project images
 - [x] Change hero section
+- [x] Review website content and confirm it meets requirements (Professional, authentic, convincing)
+- [x] Add correct links

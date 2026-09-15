@@ -61,7 +61,7 @@
 ## Milestone 4 — Pre-launch
 
 - [x] Review website content and confirm it meets requirements (Professional, authentic, convincing)
-- [ ] Tested responsive on mobile, tablet, desktop
+- [x] Tested responsive on mobile, tablet, desktop
 - [x] All links tested
 - [x] Contact form tested
 - [x] Language toggle tested

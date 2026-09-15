@@ -20,7 +20,7 @@
 
 @theme {
   /* Typography */
-  --font-sans: "Geist", sans-serif;
+  --font-sans: --font-sans: var(--font-geist-sans), sans-serif;
 
   --text-h1: 3rem;
   --text-h1--font-weight: 700;

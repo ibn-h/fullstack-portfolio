@@ -179,6 +179,7 @@ export default function Contact({ copy: contact, locale }: ContactProps) {
                       errors.email ? "contact-email-error" : undefined
                     }
                     className={fieldClassName}
+                    maxLength={5000}
                   />
                   {errors.email ? (
                     <small

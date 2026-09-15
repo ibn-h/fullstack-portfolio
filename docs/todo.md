@@ -2,6 +2,8 @@
 
 ## In Progress
 
+- [ ] Fix security issues found by Claude code
+
 ## Bugs
 
 ## Done
